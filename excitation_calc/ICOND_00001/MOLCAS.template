@@ -1,0 +1,16 @@
+basis 6-31g
+ras2 4
+nactel 7
+inactive 5
+roots 4  0  3 
+
+no-douglas-kroll
+cholesky
+method CASSCF
+
+
+#     Infos:
+#     helenclifford@midway3-amd1.rcc.local
+#     Date: 2026-07-21 11:06:19.166085
+#     Current directory: /project/lgagliardi/helenclifford/practice_rcc/sharc4/methaniminium/interface_test
+

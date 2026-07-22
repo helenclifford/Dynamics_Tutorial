@@ -1,0 +1,22 @@
+                                         #Use file "initconds"? [True] 
+1 20                                     #Initial condition range: [1 1000] 
+4 0 3                                    #Number of states: 
+1 1 1                                    #Molecular charges per multiplicity: [0 1 0] 
+17                                       #Interface number: 
+                                         #Spin-Orbit calculation? [True] 
+y                                        #Reference overlaps? [False] 
+                                         #TheoDORE? [False] 
+                                         #Do you want to calculate Magnetic Dipoles and Electric Quadrupoles? [False] 
+                                         #Path to MOLCAS: [$MOLCAS] (autocomplete enabled) 
+/scratch/midway3/helenclifford/sharc_scratch/methaniminium/init_vertical #Path to scratch directory: (autocomplete enabled) 
+                                         #Use this template file? [True] 
+1                                        #Number of CPUs: [1] 
+2000                                     #Memory (MB): [1000] 
+                                         #Do you have initial wavefunction files for multiplicities 1 3? [True] 
+2                                        #JobIph files (1) or RasOrb files (2)? 
+/project/lgagliardi/helenclifford/practice_rcc/sharc4/methaniminium/active_sp/SingletOrbitals.RasOrb #Initial wavefunction file for multiplicity 1: [MOLCAS.1.RasOrb.init] (autocomplete enabled) 
+/project/lgagliardi/helenclifford/practice_rcc/sharc4/methaniminium/active_sp/TripletOrbitals.RasOrb #Initial wavefunction file for multiplicity 3: [MOLCAS.3.RasOrb.init] (autocomplete enabled) 
+                                         #Use mode 1 (i.e., calculate here)? [True] 
+                                         #Generate submission script? [False] 
+                                         #Do you want to setup the specified calculations? [True] 
+                                         #Do you want to link the interface files? [False] 
