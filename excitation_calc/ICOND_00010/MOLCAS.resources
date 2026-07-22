@@ -1,0 +1,4 @@
+molcas $MOLCAS
+ncpu 1
+memory 2000
+scratchdir /scratch/midway3/helenclifford/sharc_scratch/methaniminium/init_vertical/ICOND_00010/
