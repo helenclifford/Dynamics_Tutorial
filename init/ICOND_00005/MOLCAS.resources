@@ -1,0 +1,4 @@
+molcas $MOLCAS
+ncpu 1
+memory 500
+scratchdir /scratch/midway3/helenclifford/sharc_scratch/methaniminium_tutorial/init/ICOND_00005/
