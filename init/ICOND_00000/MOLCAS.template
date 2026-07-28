@@ -1,0 +1,16 @@
+basis cc-pVDZ
+ras2 4
+nactel 7
+inactive 5
+roots 4  0  3 
+
+no-douglas-kroll
+cholesky
+method CASSCF
+
+
+#     Infos:
+#     helenclifford@midway3-amd1.rcc.local
+#     Date: 2026-07-27 13:03:26.191610
+#     Current directory: /project/lgagliardi/helenclifford/practice_rcc/sharc4/methaniminium/tutorial_reproduction
+
