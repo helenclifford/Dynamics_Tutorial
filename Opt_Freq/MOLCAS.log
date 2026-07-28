@@ -1,0 +1,4186 @@
+   This run of MOLCAS is using the pymolcas driver
+
+                             OPE
+                             OPE          NMOL  CASOP  ENMOLC A   SO
+                 OPE        NMOLC        AS  OP EN  MO LC     AS  OP
+                OPENM       OL CA        SO  PE NM  OL CA     SOP EN
+                OP EN      MO   LC       AS  OP ENMOL  CASO   PENMOL
+                OP  EN     MO   LC       AS  OP EN     MO     LC ASO
+               OP   E  NMOL  C  AS       OP  EN MO     LC     AS  OP
+               OP  E   NMO   LC AS        OPEN  MO     LCASOP EN   M
+               O  PEN   MO  LCA  SO
+            OPE   NMO   L   CAS    OP
+        OPENMOL  CASOP     ENMOL   CASOPE
+     OPENMOLCA   SOPENMOLCASOPEN   MOLCASOPE
+    OPENMOLCAS   OP           EN   MOL    CAS
+    OPENMOLCAS       OP  ENM        O     LCA
+    OPENMOLCAS    OPEN  MOLCASO     P  E  NMO
+    OPENMOLCAS     OP               E  N  MOL
+    OPENMOLCA   SO           PENM   O  L  CAS    OPEN    MO    LCAS
+    OPENMOLCA   SOP           ENM   O  L  CAS   OP  EN  MOLC  AS   O
+    OPENMOLCA   SOPE           NM      O  LCA   S      OP  EN MO
+    OPENMOLC                AS         O  PEN   M      OL  CA  SOPE
+    OPENMO        LCASOPE  NMOL        C  ASO   P      ENMOLC     AS
+    OPE     NMO      LCA  SO     P     E   NM   OL  CA SO  PE N   MO
+          OPENMOLCA            SOPE   NMO        LCAS  O    P  ENMO
+     OPENMOLCASOPENMOLCASOPENMOLCASOPENMOLCA
+        OPENMOLCASOPENMOLCASOPENMOLCASOPE
+            OPENMOLCASOPENMOLCASOPENM
+               OPENMOLCASOPENMOLCA        version: 26.06
+                   OPENMOLCASO
+                       OPE                tag: 13-g0281f2c7f-dirty
+
+ OpenMolcas is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License version 2.1.
+ OpenMolcas is distributed in the hope that it will be useful, but it
+ is provided "as is" and without any express or implied warranties.
+ For more details see the full text of the license in the file
+ LICENSE or in <http://www.gnu.org/licenses/>.
+
+                 Copyright (C) The OpenMolcas Authors
+           For the author list and the recommended citation,
+                   consult the file CONTRIBUTORS.md
+
+           *************************************************
+           * pymolcas version py2.30                       *
+           *   build 32e04b2d929c5171d3f97b50d75b0e6d      *
+           *   (after the EMIL interpreter by V. Veryazov) *
+           *************************************************
+
+configuration info
+------------------
+Host name: midway3-amd2.rcc.local (Linux)
+C Compiler ID: GNU
+C flags: -std=gnu99
+Fortran Compiler ID: GNU
+Fortran flags: -fno-aggressive-loop-optimizations -cpp -fdefault-integer-8 -fmax-stack-var-size=1048576
+Definitions: _MOLCAS_;_I8_;_LINUX_;_MOLCAS_MPP_;_SCALAPACK_;_GA_
+Parallel: ON (GA=ON)
+
+
+   ------------------------------------------------------------------------------------------------------------
+  |
+  |           Project: MOLCAS
+  |    Submitted from: /scratch/midway3/helenclifford/sharc_scratch/methaniminium_tutorial/Opt_Freq/WORK/MOLCAS
+  |      Scratch area: /scratch/midway3/helenclifford/sharc_scratch/methaniminium_tutorial/Opt_Freq/WORK/MOLCAS
+  |   Save outputs to: WORKDIR
+  |            Molcas: /project/lgagliardi/shared/Apps/OpenMolcas/builds/parallel
+  |
+  | Scratch area is NOT empty
+  |
+  |       MOLCASDISK = 0
+  |        MOLCASMEM = 500
+  |       MOLCASRAMD = 0
+  |    MOLCAS_DRIVER = /project/lgagliardi/shared/Apps/OpenMolcas/builds/parallel/bin/pymolcas
+  |    MOLCAS_MOLDEN = ON
+  |    MOLCAS_NPROCS = 1
+  |    MOLCAS_SOURCE = /home/mrhermes/shared/Apps/OpenMolcas
+  | MOLCAS_STRUCTURE = 0
+  |
+   ------------------------------------------------------------------------------------------------------------
+
+++ ---------   Input file   ---------
+
+&GATEWAY
+RICD
+COORD
+6
+
+C1      0.000000000      0.000000000      0.000000000
+N2      0.000000000      0.000000000      1.350000000
+H3      0.943102000      0.000000000     -0.544500000
+H4      0.943102000      0.000000000      1.879500000
+H5     -0.943102000      0.000000000      1.879500000
+H6     -0.943102000      0.000000000     -0.544500000
+GROUP = nosym
+TITLE = Molcas-Opt
+BASIS = cc-pVDZ
+
+>>> COPY -FORCE SingletOrbitals.RasOrb INPORB
+
+>>> DO WHILE
+
+  &SEWARD
+
+  &RASSCF
+  SPIN   = 1
+  NACTEL = 6,0,0
+  INACT  = 5
+  RAS2   = 4
+  CIROOT = 4,4,1
+  LUMORB
+  RLXROOT = 1
+
+  &SLAPAF
+
+>>> END DO
+
+&MCKINLEY
+
+-- ----------------------------------
+
+--- Start Module: gateway at Mon Jul 27 11:43:42 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &GATEWAY
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731113
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+
+ Title:
+                                           Molcas-Opt                                   
+
+
+++    Symmetry information:
+      ---------------------
+
+                    Character Table for C1 
+
+                             E  
+                    a        1  x, y, xy, Rz, z, xz, Ry, yz, Rx, I
+--
+
+
+++    Basis set information:
+      ----------------------
+
+
+      Basis set label: C.CC-PVDZ.........
+
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   6.000000 au
+      Associated Actual Charge      6.000000 au
+      Nuclear Model: Point charge
+
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s       9       3        X                  
+         p       4       2        X                  
+         d       1       1                 X         
+
+
+      Basis set label: N.CC-PVDZ.........
+
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   7.000000 au
+      Associated Actual Charge      7.000000 au
+      Nuclear Model: Point charge
+
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s       9       3        X                  
+         p       4       2        X                  
+         d       1       1                 X         
+
+
+      Basis set label: H.CC-PVDZ.........
+
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   1.000000 au
+      Associated Actual Charge      1.000000 au
+      Nuclear Model: Point charge
+
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s       4       2        X                  
+         p       1       1        X                  
+--
+
+
+++    Molecular structure info:
+      -------------------------
+
+                    ************************************************ 
+                    **** Cartesian Coordinates / bohr, angstrom **** 
+                    ************************************************ 
+
+     Center  Label                x              y              z                     x              y              z
+        1      C1               0.000000       0.000000       0.000000              0.000000       0.000000       0.000000
+        2      N2               0.000000       0.000000       2.551130              0.000000       0.000000       1.350000
+        3      H3               1.782204       0.000000      -1.028956              0.943102       0.000000      -0.544500
+        4      H4               1.782204       0.000000       3.551740              0.943102       0.000000       1.879500
+        5      H5              -1.782204       0.000000       3.551740             -0.943102       0.000000       1.879500
+        6      H6              -1.782204       0.000000      -1.028956             -0.943102       0.000000      -0.544500
+
+                    *************************************** 
+                    *    InterNuclear Distances / bohr    * 
+                    *************************************** 
+
+               1 C1            2 N2            3 H3            4 H4            5 H5            6 H6    
+    1 C1       0.000000
+    2 N2       2.551130        0.000000
+    3 H3       2.057912        3.999159        0.000000
+    4 H4       3.973803        2.043887        4.580696        0.000000
+    5 H5       3.973803        2.043887        5.804118        3.564409        0.000000
+    6 H6       2.057912        3.999159        3.564409        5.804118        4.580696        0.000000
+
+                    ******************************************* 
+                    *    InterNuclear Distances / angstrom    * 
+                    ******************************************* 
+
+               1 C1            2 N2            3 H3            4 H4            5 H5            6 H6    
+    1 C1       0.000000
+    2 N2       1.350000        0.000000
+    3 H3       1.089000        2.116264        0.000000
+    4 H4       2.102846        1.081578        2.424000        0.000000
+    5 H5       2.102846        1.081578        3.071407        1.886204        0.000000
+    6 H6       1.089000        2.116264        1.886204        3.071407        2.424000        0.000000
+
+                    ************************************** 
+                    *    Valence Bond Angles / degree    * 
+                    ************************************** 
+                          Atom centers                 Phi
+                      2 N2       1 C1       3 H3       120.00
+                      2 N2       1 C1       6 H6       120.00
+                      3 H3       1 C1       6 H6       120.00
+                      1 C1       2 N2       4 H4       119.31
+                      1 C1       2 N2       5 H5       119.31
+                      4 H4       2 N2       5 H5       121.38
+
+           ***************************************************************
+           *              Valence Dihedral Angles / degree               *
+           ***************************************************************
+                    Atom centers                       Phi1     Phi2     Theta 
+           3 H3       1 C1       2 N2       4 H4        120.00   119.31    -0.00
+           3 H3       1 C1       2 N2       5 H5        120.00   119.31  -180.00
+           4 H4       2 N2       1 C1       6 H6        119.31   120.00  -180.00
+           5 H5       2 N2       1 C1       6 H6        119.31   120.00    -0.00
+--
+
+
+            Nuclear Potential Energy             37.00695188 au
+
+--- Stop Module: gateway at Mon Jul 27 11:43:45 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module gateway spent 2 seconds ---
+
+>>> COPY -FORCE SingletOrbitals.RasOrb INPORB
+
+--- Start Module: seward at Mon Jul 27 11:43:45 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &SEWARD
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731116
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+               SEWARD will generate:
+                  Multipole Moment integrals up to order  2
+                  Kinetic Energy integrals
+                  Nuclear Attraction integrals (point charge)
+                  One-Electron Hamiltonian integrals
+                  Velocity integrals
+                  Orbital angular momentum around (  0.0000   0.0000   1.3587 )
+                  Velocity quadrupole around (  0.0000   0.0000   1.3587 )
+                  RI decomposed two-electron repulsion integrals stored Cholesky style
+                   - acCD auxiliary basis
+                   - CD Threshold:   1.00E-04
+
+ Title:
+                                           Molcas-Opt                                   
+
+
+                   Integrals are discarded if absolute value <: 1.00E-14
+                   Integral cutoff threshold is set to       <: 1.00E-16
+
+            Nuclear Potential Energy             37.00695188 au
+
+
+      Basis set specifications :
+      Symmetry species         a  
+      Basis functions           48
+
+
+      Input file to MOLDEN was generated!
+
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: seward at Mon Jul 27 11:43:46 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:43:46 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &RASSCF
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731119
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+
+      Header of the ONEINT file:
+      --------------------------
+      
+      Integrals generated by Gateway/Seward, Mon Jul 27 11:43:46 2026
+
+
+      OrdInt status: non-squared
+
+
+      Cartesian coordinates in angstrom:
+      -----------------------------------------------------
+      No.  Label        X            Y            Z        
+      -----------------------------------------------------
+       1   C1         0.00000000   0.00000000   0.00000000
+       2   N2         0.00000000   0.00000000   1.35000000
+       3   H3         0.94310200   0.00000000  -0.54450000
+       4   H4         0.94310200   0.00000000   1.87950000
+       5   H5        -0.94310200   0.00000000   1.87950000
+       6   H6        -0.94310200   0.00000000  -0.54450000
+      -----------------------------------------------------
+      Nuclear repulsion energy =   37.00695188
+
+++    Wave function specifications:
+      -----------------------------
+
+      Number of closed shell electrons          10
+      Number of electrons in active shells       6
+      Max number of holes in RAS1 space          0
+      Max nr of electrons in RAS3 space          0
+      Number of inactive orbitals                5
+      Number of active orbitals                  4
+      Number of secondary orbitals              39
+      Spin quantum number                      0.0
+      State symmetry                             1
+--
+
+++    Orbital specifications:
+      -----------------------
+
+      Symmetry species                           1
+                                                 a
+      Frozen orbitals                            0
+      Inactive orbitals                          5
+      Active orbitals                            4
+      RAS1 orbitals                              0
+      RAS2 orbitals                              4
+      RAS3 orbitals                              0
+      Secondary orbitals                        39
+      Deleted orbitals                           0
+      Number of basis functions                 48
+--
+
+++    CI expansion specifications:
+      ----------------------------
+
+      Number of CSFs                            10
+      Number of spin combinations               10
+      Number of determinants                    16
+      Number of root(s) required                 4
+      Root chosen for geometry opt.              1
+      CI roots used                              1     2     3     4
+      weights                                0.250 0.250 0.250 0.250
+      highest root included in the CI            4
+      max. size of the explicit Hamiltonian     10
+--
+
+++    Optimization specifications:
+      ----------------------------
+
+      RASSCF algorithm: LK RI/DF
+      Maximum number of macro iterations       200
+      Maximum number of SX iterations          100
+      Threshold for RASSCF energy            1.000E-08
+      Threshold for max MO rotation          1.000E-01
+      Threshold for max BLB element          1.000E-04
+      Level shift parameter                  5.000E-01
+      Make Quasi-Newton update
+--
+
+      The MO-coefficients are taken from the file:
+      INPORB
+      Title: RASSCF average (pseudo-natural) orbitals                                      
+
+      Total molecular charge    1.00
+
+      ************************************************************************************************************************
+      *                                                                                                                      *
+      *                                            Wave function control section                                             *
+      *                                                                                                                      *
+      ************************************************************************************************************************
+
+
+                                         RASSCF iterations: Energy and convergence statistics
+                                         ----------------------------------------------------
+
+      Iter CI   SX   CI       RASSCF       Energy    max ROT     max BLB   max BLB  Level Ln srch  Step   QN   Walltime
+          iter iter root      energy       change     param      element    value   shift minimum  type update hh:mm:ss
+ Nr of preliminary CI iterations:   1
+        1   1    3    0   -94.12771230    0.00E+00   1.24E-05    8  21 1 -2.75E-06   0.20   0.00    SX    NO    0:00:00
+        2   1    2    0   -94.12771230   -6.10E-11   7.82E-06    4   6 1 -1.30E-06   0.20   0.00    SX    NO    0:00:00
+        3   1    2    0   -94.12771230   -3.65E-11   4.73E-06    4   6 1 -7.83E-07   0.20   0.00    SX    NO    0:00:00
+        4   1    2    0   -94.12771230   -3.98E-12   2.94E-06    4   6 1 -4.87E-07   0.20   0.00    SX    NO    0:00:00
+      Convergence after  4 iterations
+        5   1    2    0   -94.12771230   -3.47E-12   2.94E-06    4   6 1 -2.99E-07   0.20   0.00    SX    NO    0:00:00
+
+      ************************************************************************************************************************
+                                                      Wave function printout:
+                       occupation of active orbitals, and spin coupling of open shells (u,d: Spin up or down)
+      ************************************************************************************************************************
+
+      Note: transformation to natural orbitals
+      has been made, which may change the order of the CSFs.
+
+      printout of CI-coefficients larger than  0.05 for root  1
+      energy=     -94.397219
+      conf/sym  1111     Coeff  Weight
+             1  2220  -0.93399 0.87233
+             4  2u2d  -0.33295 0.11086
+             8  2022   0.12787 0.01635
+
+      printout of CI-coefficients larger than  0.05 for root  2
+      energy=     -94.063915
+      conf/sym  1111     Coeff  Weight
+             2  22ud   0.95207 0.90643
+             5  2ud2   0.30590 0.09357
+
+      printout of CI-coefficients larger than  0.05 for root  3
+      energy=     -94.047051
+      conf/sym  1111     Coeff  Weight
+             1  2220   0.34972 0.12231
+             4  2u2d  -0.92276 0.85149
+             8  2022   0.15778 0.02490
+
+      printout of CI-coefficients larger than  0.05 for root  4
+      energy=     -94.002664
+      conf/sym  1111     Coeff  Weight
+             6  u22d   0.99996 0.99993
+
+      Natural orbitals and occupation numbers for root  1
+      sym 1:   1.999782   1.936829   1.999293   0.064096
+
+      Natural orbitals and occupation numbers for root  2
+      sym 1:   2.000000   2.000000   1.000000   1.000000
+
+      Natural orbitals and occupation numbers for root  3
+      sym 1:   1.999616   1.670718   1.997769   0.331898
+
+      Natural orbitals and occupation numbers for root  4
+      sym 1:   1.000000   2.000000   2.000000   1.000000
+
+      ************************************************************************************************************************
+      *                                                                                                                      *
+      *                                                    Final results                                                     *
+      *                                                                                                                      *
+      ************************************************************************************************************************
+
+
+++    Final optimization conditions:
+      ------------------------------
+
+      Average CI energy                             -94.12771230
+      RASSCF energy for state  1                    -94.39721903
+      Super-CI energy                                -0.00000000
+      RASSCF energy change                           -0.00000000
+      Max change in MO coefficients               1.887E-06
+      Max non-diagonal density matrix element     2.943E-06
+      Maximum BLB matrix element                 -2.986E-07
+      (orbital pair   4,   6 in symmetry   1)
+      Norm of electronic gradient            7.769E-02
+--
+
+
+      Final state energy(ies):
+      ------------------------
+
+::    RASSCF root number  1 Total energy:    -94.39721903
+::    RASSCF root number  2 Total energy:    -94.06391490
+::    RASSCF root number  3 Total energy:    -94.04705139
+::    RASSCF root number  4 Total energy:    -94.00266386
+
+++    Molecular orbitals:
+      -------------------
+
+      Pseudonatural active orbitals and approximate occupation numbers
+
+
+
+
+      Molecular orbitals for symmetry species 1: a  
+
+
+      Orbital                 1         2         3         4         5         6         7         8         9        10
+      Energy           -15.9102  -11.5918   -1.4962   -1.1461   -0.9846   -0.8922   -0.7125   -0.8033   -0.2911   -0.0578
+      Occ. No.           2.0000    2.0000    2.0000    2.0000    2.0000    1.7498    1.7154    1.7493    0.7855    0.0000
+
+     1 C1     1s         0.0001    1.0012   -0.0114    0.0072   -0.0000   -0.0069   -0.0000    0.0000    0.0000    0.0115
+     2 C1     2s        -0.0000    0.0071    0.4183   -0.7144    0.0000   -0.0495    0.0000    0.0000    0.0000   -0.0477
+     3 C1     *s         0.0025   -0.0048   -0.1553    0.1543    0.0000    0.1039    0.0000   -0.0000    0.0000   -0.5537
+     4 C1     2px        0.0000   -0.0000   -0.0000   -0.0000    0.2182   -0.0000   -0.0000   -0.6734   -0.0000    0.0000
+     5 C1     *px        0.0000    0.0000    0.0000    0.0000   -0.0407    0.0000    0.0000    0.1358   -0.0000    0.0000
+     6 C1     2py        0.0000    0.0000    0.0000   -0.0000    0.0000   -0.0000    0.2922    0.0000   -0.9379    0.0000
+     7 C1     *py        0.0000   -0.0000    0.0000   -0.0000   -0.0000    0.0000   -0.0587    0.0000   -0.1000    0.0000
+     8 C1     2pz       -0.0002    0.0014    0.1505    0.1604   -0.0000   -0.6141   -0.0000    0.0000    0.0000    0.1868
+     9 C1     *pz        0.0015    0.0007   -0.0744   -0.0295   -0.0000    0.1902    0.0000   -0.0000    0.0000    0.2214
+    10 C1     *d2-       0.0000    0.0000    0.0000   -0.0000    0.0000    0.0000   -0.0000   -0.0000   -0.0000    0.0000
+    11 C1     *d1-       0.0000    0.0000    0.0000   -0.0000    0.0000   -0.0000    0.0397    0.0000    0.0164   -0.0000
+    12 C1     *d0       -0.0004    0.0006    0.0265    0.0062   -0.0000   -0.0374   -0.0000    0.0000   -0.0000   -0.0124
+    13 C1     *d1+      -0.0000    0.0000   -0.0000    0.0000    0.0294    0.0000   -0.0000    0.0251   -0.0000    0.0000
+    14 C1     *d2+       0.0002    0.0006   -0.0006   -0.0083    0.0000    0.0114   -0.0000   -0.0000   -0.0000    0.0002
+    15 N2     1s         1.0010    0.0000   -0.0101    0.0007   -0.0000   -0.0015   -0.0000    0.0000    0.0000    0.0349
+    16 N2     2s         0.0051    0.0008    0.7877    0.3471   -0.0000   -0.0669   -0.0000    0.0000   -0.0000   -0.2927
+    17 N2     *s        -0.0062   -0.0028   -0.1185   -0.0293    0.0000    0.0191   -0.0000   -0.0000   -0.0000   -1.0002
+    18 N2     2px       -0.0000   -0.0000   -0.0000    0.0000    0.6737    0.0000   -0.0000    0.2158    0.0000    0.0000
+    19 N2     *px        0.0000   -0.0000    0.0000   -0.0000   -0.0991   -0.0000    0.0000   -0.0266   -0.0000   -0.0000
+    20 N2     2py        0.0000    0.0000   -0.0000    0.0000    0.0000   -0.0000    0.8498    0.0000    0.3901   -0.0000
+    21 N2     *py       -0.0000   -0.0000   -0.0000    0.0000    0.0000   -0.0000    0.0424   -0.0000    0.1694   -0.0000
+    22 N2     2pz       -0.0007    0.0002   -0.0532    0.2650    0.0000    0.6431    0.0000   -0.0000    0.0000   -0.1861
+    23 N2     *pz        0.0020    0.0017   -0.0025   -0.0421   -0.0000   -0.0823   -0.0000    0.0000    0.0000   -0.2474
+    24 N2     *d2-       0.0000    0.0000    0.0000    0.0000    0.0000    0.0000   -0.0000    0.0000    0.0000    0.0000
+    25 N2     *d1-       0.0000   -0.0000   -0.0000    0.0000   -0.0000    0.0000   -0.0180   -0.0000    0.0184   -0.0000
+    26 N2     *d0        0.0000   -0.0005    0.0115   -0.0138   -0.0000   -0.0203   -0.0000    0.0000    0.0000   -0.0009
+    27 N2     *d1+       0.0000    0.0000    0.0000    0.0000    0.0027    0.0000   -0.0000    0.0207    0.0000    0.0000
+    28 N2     *d2+       0.0002   -0.0003    0.0041    0.0032    0.0000    0.0070   -0.0000   -0.0000   -0.0000   -0.0004
+    29 H3     1s        -0.0004   -0.0005    0.1162   -0.3664    0.1185    0.2632   -0.0000   -0.5502   -0.0000    0.0093
+    30 H3     *s         0.0003    0.0016   -0.0588    0.1721   -0.0690   -0.0989    0.0000    0.2101   -0.0000    0.3900
+    31 H3     *px       -0.0000    0.0003   -0.0089    0.0251   -0.0093   -0.0154    0.0000    0.0164   -0.0000    0.0038
+    32 H3     *py       -0.0000   -0.0000   -0.0000    0.0000    0.0000   -0.0000    0.0075    0.0000   -0.0239    0.0000
+    33 H3     *pz       -0.0002   -0.0003    0.0088   -0.0123    0.0037   -0.0012   -0.0000   -0.0192    0.0000    0.0110
+    34 H4     1s         0.0000    0.0003    0.2345    0.2188    0.4852    0.2577   -0.0000    0.2240    0.0000    0.2205
+    35 H4     *s         0.0003   -0.0002   -0.1127   -0.1017   -0.1966   -0.0956    0.0000   -0.0633    0.0000    0.7116
+    36 H4     *px        0.0004   -0.0000   -0.0249   -0.0195   -0.0258   -0.0185    0.0000   -0.0080   -0.0000   -0.0037
+    37 H4     *py       -0.0000    0.0000    0.0000   -0.0000    0.0000   -0.0000    0.0203    0.0000    0.0120   -0.0000
+    38 H4     *pz        0.0001   -0.0003   -0.0126   -0.0080   -0.0248    0.0001    0.0000   -0.0080    0.0000   -0.0065
+    39 H5     1s         0.0000    0.0003    0.2345    0.2188   -0.4852    0.2577    0.0000   -0.2240    0.0000    0.2205
+    40 H5     *s         0.0003   -0.0002   -0.1127   -0.1017    0.1966   -0.0956   -0.0000    0.0633    0.0000    0.7116
+    41 H5     *px       -0.0004    0.0000    0.0249    0.0195   -0.0258    0.0185    0.0000   -0.0080   -0.0000    0.0037
+    42 H5     *py       -0.0000    0.0000   -0.0000   -0.0000    0.0000   -0.0000    0.0203   -0.0000    0.0120   -0.0000
+    43 H5     *pz        0.0001   -0.0003   -0.0126   -0.0080    0.0248    0.0001   -0.0000    0.0080    0.0000   -0.0065
+    44 H6     1s        -0.0004   -0.0005    0.1162   -0.3664   -0.1185    0.2632    0.0000    0.5502   -0.0000    0.0093
+    45 H6     *s         0.0003    0.0016   -0.0588    0.1721    0.0690   -0.0989   -0.0000   -0.2101   -0.0000    0.3900
+    46 H6     *px        0.0000   -0.0003    0.0089   -0.0251   -0.0093    0.0154    0.0000    0.0164    0.0000   -0.0038
+    47 H6     *py       -0.0000   -0.0000   -0.0000    0.0000    0.0000   -0.0000    0.0075    0.0000   -0.0239    0.0000
+    48 H6     *pz       -0.0002   -0.0003    0.0088   -0.0123   -0.0037   -0.0012    0.0000    0.0192    0.0000    0.0110
+
+
+      Orbital                11        12        13
+      Energy            -0.0158   -0.0029    0.0789
+      Occ. No.           0.0000    0.0000    0.0000
+
+     1 C1     1s        -0.0000    0.0339    0.0000
+     2 C1     2s         0.0000   -0.3626    0.0000
+     3 C1     *s         0.0000   -1.5958   -0.0000
+     4 C1     2px        0.2984    0.0000    0.4013
+     5 C1     *px        0.5508    0.0000    1.0935
+     6 C1     2py       -0.0000   -0.0000   -0.0000
+     7 C1     *py       -0.0000   -0.0000   -0.0000
+     8 C1     2pz       -0.0000    0.1352   -0.0000
+     9 C1     *pz       -0.0000    0.3938   -0.0000
+    10 C1     *d2-       0.0000   -0.0000    0.0000
+    11 C1     *d1-      -0.0000    0.0000   -0.0000
+    12 C1     *d0       -0.0000    0.0099   -0.0000
+    13 C1     *d1+       0.0230    0.0000    0.0015
+    14 C1     *d2+       0.0000   -0.0095   -0.0000
+    15 N2     1s         0.0000   -0.0115   -0.0000
+    16 N2     2s        -0.0000    0.1679   -0.0000
+    17 N2     *s        -0.0000    0.4018    0.0000
+    18 N2     2px        0.3706    0.0000   -0.3025
+    19 N2     *px        0.3436    0.0000   -0.6023
+    20 N2     2py        0.0000    0.0000    0.0000
+    21 N2     *py        0.0000    0.0000    0.0000
+    22 N2     2pz        0.0000   -0.0131   -0.0000
+    23 N2     *pz       -0.0000   -0.0019   -0.0000
+    24 N2     *d2-       0.0000    0.0000   -0.0000
+    25 N2     *d1-       0.0000    0.0000    0.0000
+    26 N2     *d0        0.0000   -0.0104    0.0000
+    27 N2     *d1+      -0.0228   -0.0000   -0.0213
+    28 N2     *d2+       0.0000    0.0040    0.0000
+    29 H3     1s        -0.1125    0.1303   -0.0239
+    30 H3     *s        -0.8624    1.2229   -1.6209
+    31 H3     *px        0.0014   -0.0071    0.0023
+    32 H3     *py       -0.0000   -0.0000    0.0000
+    33 H3     *pz       -0.0009    0.0011   -0.0005
+    34 H4     1s        -0.1798   -0.0898    0.0285
+    35 H4     *s        -0.8689   -0.3441    0.8950
+    36 H4     *px        0.0007    0.0061   -0.0105
+    37 H4     *py        0.0000    0.0000    0.0000
+    38 H4     *pz       -0.0040   -0.0078   -0.0085
+    39 H5     1s         0.1798   -0.0898   -0.0285
+    40 H5     *s         0.8689   -0.3441   -0.8950
+    41 H5     *px        0.0007   -0.0061   -0.0105
+    42 H5     *py        0.0000    0.0000    0.0000
+    43 H5     *pz        0.0040   -0.0078    0.0085
+    44 H6     1s         0.1125    0.1303    0.0239
+    45 H6     *s         0.8624    1.2229    1.6209
+    46 H6     *px        0.0014    0.0071    0.0023
+    47 H6     *py       -0.0000   -0.0000    0.0000
+    48 H6     *pz        0.0009    0.0011    0.0005
+--
+
+      Von Neumann Entropy (Root   1) =  0.20458
+
+
+      Mulliken population analysis for root number:  1
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0024  2.0019  1.2250  1.0269  1.0269  1.2250
+      2s       1.5557  1.6706  0.0000  0.0000  0.0000  0.0000
+      2px      1.3234  1.3333  0.0000  0.0000  0.0000  0.0000
+      2pz      1.0754  1.2599  0.0000  0.0000  0.0000  0.0000
+      2py      0.6664  1.3176  0.0000  0.0000  0.0000  0.0000
+      *s      -0.3810 -0.2312 -0.4288 -0.3431 -0.3431 -0.4288
+      *px     -0.2246 -0.1781  0.0216  0.0318  0.0318  0.0216
+      *pz     -0.2568 -0.1456  0.0105  0.0140  0.0140  0.0105
+      *py     -0.0421  0.0127  0.0039  0.0079  0.0079  0.0039
+      *d2+     0.0043  0.0020  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0259  0.0088  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0272  0.0102  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0179  0.0048  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    5.7940  7.0668  0.8322  0.7375  0.7375  0.8322
+
+      N-E      0.2060 -0.0668  0.1678  0.2625  0.2625  0.1678
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  1
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                   X=  1.9247E-08               Y= -1.6563E-08               Z=  6.0378E-01           Total=  6.0378E-01
+      Center of Charge (angstrom)
+                     X=    0.00000000               Y=   -0.00000000               Z=    0.84471382
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                  XX= -6.8565E+00              XY= -4.6050E-09              XZ=  4.9646E-09              YY= -1.2475E+01
+                  YZ=  7.6625E-09              ZZ= -4.3591E+00
+      In traceless form (debye*angstrom)
+                  XX=  1.5607E+00              XY= -6.9074E-09              XZ=  7.4469E-09              YY= -6.8674E+00
+                  YZ=  1.1494E-08              ZZ=  5.3067E+00
+--
+
+      Von Neumann Entropy (Root   2) =  1.00000
+
+
+      Mulliken population analysis for root number:  2
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0024  2.0019  0.9484  0.9962  0.9962  0.9484
+      2s       1.5557  1.6706  0.0000  0.0000  0.0000  0.0000
+      2px      0.7597  1.2982  0.0000  0.0000  0.0000  0.0000
+      2pz      1.0755  1.2600  0.0000  0.0000  0.0000  0.0000
+      2py      1.3740  1.4996  0.0000  0.0000  0.0000  0.0000
+      *s      -0.3810 -0.2312 -0.3607 -0.3403 -0.3403 -0.3607
+      *px     -0.1321 -0.1767  0.0200  0.0315  0.0315  0.0200
+      *pz     -0.2568 -0.1457  0.0076  0.0138  0.0138  0.0076
+      *py      0.0174  0.0370  0.0106  0.0102  0.0102  0.0106
+      *d2+     0.0043  0.0020  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0184  0.0046  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0272  0.0102  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0224  0.0080  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    6.0870  7.2386  0.6258  0.7114  0.7114  0.6258
+
+      N-E     -0.0870 -0.2386  0.3742  0.2886  0.2886  0.3742
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  2
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                   X=  9.8462E-09               Y=  3.2520E-09               Z= -1.0164E+00           Total=  1.0164E+00
+      Center of Charge (angstrom)
+                     X=    0.00000000               Y=    0.00000000               Z=    0.50740864
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                  XX= -4.2989E+00              XY=  1.3967E-08              XZ= -8.4258E-09              YY= -1.4487E+01
+                  YZ=  1.6654E-09              ZZ= -2.8196E+00
+      In traceless form (debye*angstrom)
+                  XX=  4.3542E+00              XY=  2.0950E-08              XZ= -1.2639E-08              YY= -1.0928E+01
+                  YZ=  2.4982E-09              ZZ=  6.5733E+00
+--
+
+      Von Neumann Entropy (Root   3) =  0.64869
+
+
+      Mulliken population analysis for root number:  3
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0024  2.0019  1.2245  1.0269  1.0269  1.2245
+      2s       1.5557  1.6706  0.0000  0.0000  0.0000  0.0000
+      2px      1.3226  1.3332  0.0000  0.0000  0.0000  0.0000
+      2pz      1.0753  1.2598  0.0000  0.0000  0.0000  0.0000
+      2py      0.4098  1.3737  0.0000  0.0000  0.0000  0.0000
+      *s      -0.3810 -0.2312 -0.4287 -0.3431 -0.3431 -0.4287
+      *px     -0.2245 -0.1781  0.0216  0.0318  0.0318  0.0216
+      *pz     -0.2568 -0.1456  0.0105  0.0140  0.0140  0.0105
+      *py      0.0167  0.1457  0.0045  0.0112  0.0112  0.0045
+      *d2+     0.0043  0.0020  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0259  0.0088  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0272  0.0102  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0239  0.0015  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    5.6014  7.2524  0.8324  0.7407  0.7407  0.8324
+
+      N-E      0.3986 -0.2524  0.1676  0.2593  0.2593  0.1676
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  3
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                   X=  1.8515E-08               Y= -5.8468E-09               Z= -2.2938E-01           Total=  2.2938E-01
+      Center of Charge (angstrom)
+                     X=    0.00000000               Y=   -0.00000000               Z=    0.67125505
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                  XX= -6.7851E+00              XY= -2.7748E-08              XZ=  5.1802E-09              YY= -1.2189E+01
+                  YZ=  3.6655E-09              ZZ= -6.1784E+00
+      In traceless form (debye*angstrom)
+                  XX=  2.3988E+00              XY= -4.1621E-08              XZ=  7.7703E-09              YY= -5.7077E+00
+                  YZ=  5.4983E-09              ZZ=  3.3088E+00
+--
+
+      Von Neumann Entropy (Root   4) =  1.00000
+
+
+      Mulliken population analysis for root number:  4
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0024  2.0019  1.1510  0.9594  0.9594  1.1510
+      2s       1.5581  1.6701  0.0000  0.0000  0.0000  0.0000
+      2px      1.3238  1.3333  0.0000  0.0000  0.0000  0.0000
+      2pz      0.6637  0.7777  0.0000  0.0000  0.0000  0.0000
+      2py      1.0950  1.7422  0.0000  0.0000  0.0000  0.0000
+      *s      -0.3913 -0.2318 -0.4069 -0.3237 -0.3237 -0.4069
+      *px     -0.2247 -0.1781  0.0196  0.0291  0.0291  0.0196
+      *pz     -0.1786 -0.0992  0.0104  0.0140  0.0140  0.0104
+      *py      0.0043  0.0834  0.0086  0.0123  0.0123  0.0086
+      *d2+     0.0031  0.0014  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0259  0.0088  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0204  0.0075  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0269  0.0063  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    5.9291  7.1234  0.7827  0.6910  0.6910  0.7827
+
+      N-E      0.0709 -0.1234  0.2173  0.3090  0.3090  0.2173
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  4
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                   X= -3.0093E-08               Y=  2.5402E-09               Z=  9.9579E-01           Total=  9.9579E-01
+      Center of Charge (angstrom)
+                     X=   -0.00000001               Y=    0.00000000               Z=    0.92632798
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                  XX= -6.4511E+00              XY= -7.7137E-11              XZ= -1.1073E-08              YY= -1.4317E+01
+                  YZ= -4.5260E-09              ZZ= -3.6204E+00
+      In traceless form (debye*angstrom)
+                  XX=  2.5176E+00              XY= -1.1571E-10              XZ= -1.6609E-08              YY= -9.2812E+00
+                  YZ= -6.7890E-09              ZZ=  6.7637E+00
+--
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+      Average orbitals are written to the RASORB file
+      Natural orbitals for root   1 are written to the RASORB.1 file
+      Natural orbitals for root   2 are written to the RASORB.2 file
+      Natural orbitals for root   3 are written to the RASORB.3 file
+      Natural orbitals for root   4 are written to the RASORB.4 file
+      Spin density orbitals for root   1 are written to the SPDORB.1 file
+      Spin density orbitals for root   2 are written to the SPDORB.2 file
+      Spin density orbitals for root   3 are written to the SPDORB.3 file
+      Spin density orbitals for root   4 are written to the SPDORB.4 file
+
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:43:48 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 1 second ---
+
+--- Start Module: slapaf at Mon Jul 27 11:43:49 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &SLAPAF
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731123
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:43:49 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:43:49 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &ALASKA
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731126
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:43:50 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:43:50 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                               &MCLR
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731129
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+ No .RLXPT2  or MCKINT  , I hope that is OK
+ Seward mode is assumed, reading perturbation from ONEINT
+ OrdInt status: non-squared
+
+++   Wave function specifications:
+     -----------------------------
+
+     Number of closed shell electrons             10
+     Number of electrons in active shells          6
+     Max number of holes in RAS1 space             0
+     Max number of electrons in RAS3 space         0
+     Number of inactive orbitals                   5
+     Number of active orbitals                     4
+     Number of secondary orbitals                 39
+     Spin quantum number                         0.0
+     State symmetry                                1
+     Number of CI roots                            4
+     States considered                             1     2     3     4
+     Weights                                   0.250 0.250 0.250 0.250
+
+     Symmetry species                              1
+     Skipped sym. species                          0
+     Frozen orbitals                               0
+     Inactive orbitals                             5
+     Active orbitals                               4
+     RAS1 orbitals                                 0
+     RAS2 orbitals                                 4
+     RAS3 orbitals                                 0
+     Deleted orbitals                              0
+     Number of basis functions                    48
+     Number of orbitals                           48
+     Number of configurations                     10
+     Number of combinations                       10
+     Natural orbitals are used in the last CI
+     RASSCF state energy =            -94.3972190293
+     Size of explicit Hamiltonian in PCG:        100
+--
+
+     Convergence threshold=               1.0000E-04
+     Max number of iterations in PCG:            200
+     Using the Cho-MO Algorithm
+     Lagrangian multipliers are calculated for state no.   1
+
+
+  Reordering of the Cholesky vectors to full storage.
+  Elapsed time for the reordering section:    1.0000000000000009E-002
+  CPU time for the reordering section:    1.0000000000000009E-002
+
+ TIMING INFORMATION:   CPU(s)   %CPU   Elapsed(s)
+ Transformation          0.00    0.0         0.01
+ Generation              0.02    2.0         0.01
+ TOTAL                   0.04    4.0         0.04
+
+        Iteration       Delta           Res(kappa)       Res(CI)          DeltaK           DeltaC
+            1      1.198399763E-01  4.090906274E-02  7.318064684E-03  4.407503932E-04  2.165545205E-04
+            2      9.426532124E-03  1.171189825E-02  2.398946362E-03  3.320383120E-05  1.849933226E-05
+            3      3.849634900E-03  9.597684037E-03  1.135052430E-03  1.530364816E-05  5.811041731E-06
+            4      6.625886801E-04  2.980396123E-03  6.697443560E-04  2.474658339E-06  1.159544609E-06
+            5      9.452808933E-05  1.121665838E-03  2.937109485E-04  2.988220424E-07  2.196508371E-07
+            6      1.369646874E-05  5.758895336E-04  6.900370153E-05  6.541975623E-08  9.703391178E-09
+            7      1.328536801E-06  1.676714318E-04  2.747718965E-05  5.853682144E-09  1.433149798E-09
+      Perturbation no:    1 converged in    7 steps.
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                   X=  6.1755E-09               Y= -4.3522E-09               Z=  5.2101E-01           Total=  5.2101E-01
+      Center of Charge (angstrom)
+                     X=    0.00000000               Y=   -0.00000000               Z=    0.82748227
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7190
+                  XX= -6.7590E+00              XY= -3.2926E-09              XZ= -2.8968E-09              YY= -1.2487E+01
+                  YZ=  1.8444E-09              ZZ= -4.3913E+00
+      In traceless form (debye*angstrom)
+                  XX=  1.6801E+00              XY= -4.9390E-09              XZ= -4.3452E-09              YY= -6.9119E+00
+                  YZ=  2.7666E-09              ZZ=  5.2317E+00
+--
+
+
+      The response parameters are written to the file RESP.
+ ###############################################################################
+ ###############################################################################
+ ###                                                                         ###
+ ###                                                                         ###
+ ###    WARNING: RunFile label nBas                                          ###
+ ###    was used       61 times                                              ###
+ ###                                                                         ###
+ ###                                                                         ###
+ ###############################################################################
+ ###############################################################################
+--- Stop Module: mclr at Mon Jul 27 11:43:51 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:43:51 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &ALASKA
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731132
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+
+                     Threshold for contributions to the gradient: 1.000E-07
+
+
+                    ********************************************
+                    * Symmetry Adapted Cartesian Displacements *
+                    ********************************************
+
+
+           Irreducible representation : a  
+           Basis function(s) of irrep: x, y, xy, Rz, z, xz, Ry, yz, Rx, I                                              
+
+ Basis Label        Type   Center Phase
+   1   C1           x         1     1
+   2   C1           y         1     1
+   3   C1           z         1     1
+   4   N2           x         2     1
+   5   N2           y         2     1
+   6   N2           z         2     1
+   7   H3           x         3     1
+   8   H3           y         3     1
+   9   H3           z         3     1
+  10   H4           x         4     1
+  11   H4           y         4     1
+  12   H4           z         4     1
+  13   H5           x         5     1
+  14   H5           y         5     1
+  15   H5           z         5     1
+  16   H6           x         6     1
+  17   H6           y         6     1
+  18   H6           z         6     1
+
+                     No automatic utilization of translational and rotational invariance of the energy is employed.
+
+ RI-ERI gradients!
+
+ **************************************************
+ *                                                *
+ *              Molecular gradients               *
+ *                                                *
+ **************************************************
+
+  Irreducible representation: a  
+ ------------------------------------------------------------------------------------------
+                              X                       Y                       Z
+ ------------------------------------------------------------------------------------------
+  C1                1.13470829607443E-09    1.55944026044156E-09   -8.12415232660886E-02
+  N2               -3.53167016195688E-09    4.31925610054820E-10    5.01073264557981E-02
+  H3                2.68659430246787E-03   -7.17709051273229E-10   -6.00580493723712E-03
+  H4                4.99021977435561E-02   -1.61854117796124E-09    2.15729040076622E-02
+  H5               -4.99021968300881E-02    5.01168873102926E-10    2.15729053015434E-02
+  H6               -2.68659281898476E-03   -1.56284514364810E-10   -6.00580756170266E-03
+ ------------------------------------------------------------------------------------------
+
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:43:53 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = UNKNOWN_VARIABLE
+
+--- Start Module: slapaf at Mon Jul 27 11:43:53 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &SLAPAF
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731137
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+
+
+++       Slapaf input parameters:
+         ------------------------
+
+ Maximum number of iterations:              2000
+ Convergence test a la Schlegel.
+ Convergence criterion on gradient/para.<=: 3.0E-04
+ Convergence criterion on step/parameter<=: 3.0E-04
+ Convergence criterion on energy change <=: 0.0E+00
+ Parameters for step-restricted optimization
+ Maximum step length (initial seed):       3.00E-01
+
+ -RFO activated with parameters:
+   Maximum number of data points used in RFO:      5
+ Line search is performed
+
+
+ -Optimization for minimum.
+  Optimization method: RS-RFO.
+
+ -Initial Hessian guessed by Hessian Model Function (HMF).
+  HMF augmented with weak interactions.
+
+ -Hessian update method: Broyden-Fletcher-Goldfarb-Shanno
+  Maximum number of points in Hessian update:  5
+
+ -Relaxation will be done on non-redundant internal coordinates, based on
+  force constant weighted redundant internal coordinates.
+
+--
+
+ ******************************************
+ * Statistics of the internal coordinates *
+ ******************************************
+ Translations and Rotations:         0
+ Bonds                     :         5
+ Angles                    :         6
+ Torsions                  :         4
+ Out-of-plane angles       :         4
+
+
+**********************************************************************************************************************
+*                                    Energy Statistics for Geometry Optimization                                     *
+**********************************************************************************************************************
+                       Energy     Grad      Grad              Step                 Estimated   Geom       Hessian     
+Iter      Energy       Change     Norm      Max    Element    Max     Element     Final Energy Update Update   Index  
+  1    -94.39721903  0.00000000 0.122918 -0.087787 nrc005  -0.129599  nrc006      -94.40800117 RS-RFO  None      0    
+
+       +----------------------------------+----------------------------------+
+       +    Cartesian Displacements       +    Gradient in internals         +
+       +  Value      Threshold Converged? +  Value      Threshold Converged? +
+ +-----+----------------------------------+----------------------------------+
+ + RMS + 8.9461E-02  1.2000E-03     No    + 5.4970E-02  3.0000E-04     No    +
+ +-----+----------------------------------+----------------------------------+
+ + Max + 1.3020E-01  1.8000E-03     No    + 8.7787E-02  4.5000E-04     No    +
+ +-----+----------------------------------+----------------------------------+
+
+ Convergence not reached yet!
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+
+++ Geometry section
+
+********************************************************************************
+  Geometrical information of the new structure
+********************************************************************************
+
+
+ *********************************************************
+ * Nuclear coordinates for the next iteration / bohr     *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000       -0.000000        0.044617
+  N2               0.000000       -0.000000        2.488811
+  H3               1.786791       -0.000000       -0.964920
+  H4               1.664282        0.000000        3.496556
+  H5              -1.664282       -0.000000        3.496556
+  H6              -1.786791        0.000000       -0.964920
+
+
+ *********************************************************
+ * Nuclear coordinates for the next iteration / angstrom *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000       -0.000000        0.023610
+  N2               0.000000       -0.000000        1.317022
+  H3               0.945529       -0.000000       -0.510614
+  H4               0.880700        0.000000        1.850298
+  H5              -0.880700       -0.000000        1.850298
+  H6              -0.945529        0.000000       -0.510614
+
+
+                    *************************************** 
+                    *    InterNuclear Distances / bohr    * 
+                    *************************************** 
+
+               1 C1            2 N2            3 H3            4 H4            5 H5    
+    1 C1       0.000000
+    2 N2       2.444194        0.000000
+    3 H3       2.052264        3.888557        0.000000
+    4 H4       3.832195        1.945607        4.463157        0.000000
+    5 H5       3.832195        1.945607        5.640449        3.328564        0.000000
+    6 H6       2.052264        3.888557        3.573582        5.640449        4.463157
+
+               6 H6    
+    6 H6       0.000000
+
+                    ******************************************* 
+                    *    InterNuclear Distances / angstrom    * 
+                    ******************************************* 
+
+               1 C1            2 N2            3 H3            4 H4            5 H5    
+    1 C1       0.000000
+    2 N2       1.293412        0.000000
+    3 H3       1.086011        2.057736        0.000000
+    4 H4       2.027910        1.029571        2.361801        0.000000
+    5 H5       2.027910        1.029571        2.984797        1.761400        0.000000
+    6 H6       1.086011        2.057736        1.891058        2.984797        2.361801
+
+               6 H6    
+    6 H6       0.000000
+
+                    ************************************** 
+                    *    Valence Bond Angles / degree    * 
+                    ************************************** 
+                          Atom centers                 Phi
+                      2 N2       1 C1       3 H3       119.47
+                      2 N2       1 C1       6 H6       119.47
+                      3 H3       1 C1       6 H6       121.07
+                      1 C1       2 N2       4 H4       121.20
+                      1 C1       2 N2       5 H5       121.20
+                      4 H4       2 N2       5 H5       117.61
+
+           ***************************************************************
+           *              Valence Dihedral Angles / degree               *
+           ***************************************************************
+                    Atom centers                       Phi1     Phi2     Theta 
+           3 H3       1 C1       2 N2       4 H4        119.47   121.20     0.00
+           3 H3       1 C1       2 N2       5 H5        119.47   121.20   180.00
+           4 H4       2 N2       1 C1       6 H6        121.20   119.47  -180.00
+           5 H5       2 N2       1 C1       6 H6        121.20   119.47     0.00
+--
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:43:54 2026 /rc=_RC_CONTINUE_LOOP_ ---
+--- Module slapaf spent 1 second ---
+
+>>> END DO
+
+--- Start Module: seward at Mon Jul 27 11:43:54 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:43:55 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:43:55 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:43:57 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:43:57 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:43:58 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:43:58 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:43:59 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:43:59 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:44:00 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:00 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:44:02 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = UNKNOWN_VARIABLE
+
+--- Start Module: slapaf at Mon Jul 27 11:44:02 2026 ---
+
+**********************************************************************************************************************
+*                                    Energy Statistics for Geometry Optimization                                     *
+**********************************************************************************************************************
+                       Energy     Grad      Grad              Step                 Estimated   Geom       Hessian     
+Iter      Energy       Change     Norm      Max    Element    Max     Element     Final Energy Update Update   Index  
+  1    -94.39721903  0.00000000 0.122918 -0.087787 nrc005  -0.129599  nrc006      -94.40800117 RS-RFO  None      0    
+  2    -94.41173138 -0.01451235 0.037875 -0.029329 nrc005  -0.057475  nrc005      -94.41300797 RS-RFO  BFGS      0    
+
+       +----------------------------------+----------------------------------+
+       +    Cartesian Displacements       +    Gradient in internals         +
+       +  Value      Threshold Converged? +  Value      Threshold Converged? +
+ +-----+----------------------------------+----------------------------------+
+ + RMS + 3.1718E-02  1.2000E-03     No    + 1.6938E-02  3.0000E-04     No    +
+ +-----+----------------------------------+----------------------------------+
+ + Max + 4.4682E-02  1.8000E-03     No    + 2.9329E-02  4.5000E-04     No    +
+ +-----+----------------------------------+----------------------------------+
+
+ Convergence not reached yet!
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+
+++ Geometry section
+
+********************************************************************************
+  Geometrical information of the new structure
+********************************************************************************
+
+
+ *********************************************************
+ * Nuclear coordinates for the next iteration / bohr     *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000        0.000000        0.069294
+  N2               0.000000        0.000000        2.472190
+  H3               1.778350        0.000000       -0.942387
+  H4               1.628351       -0.000000        3.469995
+  H5              -1.628351        0.000000        3.469995
+  H6              -1.778350       -0.000000       -0.942387
+
+
+ *********************************************************
+ * Nuclear coordinates for the next iteration / angstrom *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000        0.000000        0.036669
+  N2               0.000000        0.000000        1.308227
+  H3               0.941063        0.000000       -0.498690
+  H4               0.861686       -0.000000        1.836242
+  H5              -0.861686        0.000000        1.836242
+  H6              -0.941063       -0.000000       -0.498690
+
+--
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:03 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+--- Start Module: seward at Mon Jul 27 11:44:03 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:44:04 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:44:04 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:44:06 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:44:06 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:07 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:07 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:44:08 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:44:08 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:44:09 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:09 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:44:11 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = UNKNOWN_VARIABLE
+
+--- Start Module: slapaf at Mon Jul 27 11:44:11 2026 ---
+
+**********************************************************************************************************************
+*                                    Energy Statistics for Geometry Optimization                                     *
+**********************************************************************************************************************
+                       Energy     Grad      Grad              Step                 Estimated   Geom       Hessian     
+Iter      Energy       Change     Norm      Max    Element    Max     Element     Final Energy Update Update   Index  
+  1    -94.39721903  0.00000000 0.122918 -0.087787 nrc005  -0.129599  nrc006      -94.40800117 RS-RFO  None      0    
+  2    -94.41173138 -0.01451235 0.037875 -0.029329 nrc005  -0.057475  nrc005      -94.41300797 RS-RFO  BFGS      0    
+  3    -94.41295828 -0.00122690 0.002969 -0.001676 nrc001  -0.002399  nrc006      -94.41296252 RS-RFO  BFGS      0    
+
+       +----------------------------------+----------------------------------+
+       +    Cartesian Displacements       +    Gradient in internals         +
+       +  Value      Threshold Converged? +  Value      Threshold Converged? +
+ +-----+----------------------------------+----------------------------------+
+ + RMS + 2.0537E-03  1.2000E-03     No    + 1.3276E-03  3.0000E-04     No    +
+ +-----+----------------------------------+----------------------------------+
+ + Max + 2.7837E-03  1.8000E-03     No    + 1.6760E-03  4.5000E-04     No    +
+ +-----+----------------------------------+----------------------------------+
+
+ Convergence not reached yet!
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+
+++ Geometry section
+
+********************************************************************************
+  Geometrical information of the new structure
+********************************************************************************
+
+
+ *********************************************************
+ * Nuclear coordinates for the next iteration / bohr     *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000       -0.000001        0.067192
+  N2               0.000000       -0.000000        2.472456
+  H3               1.777820        0.000000       -0.943930
+  H4               1.627049        0.000000        3.472455
+  H5              -1.627049       -0.000000        3.472455
+  H6              -1.777820        0.000001       -0.943930
+
+
+ *********************************************************
+ * Nuclear coordinates for the next iteration / angstrom *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000       -0.000000        0.035557
+  N2               0.000000       -0.000000        1.308367
+  H3               0.940782        0.000000       -0.499506
+  H4               0.860997        0.000000        1.837544
+  H5              -0.860997       -0.000000        1.837544
+  H6              -0.940782        0.000000       -0.499506
+
+--
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:12 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+--- Start Module: seward at Mon Jul 27 11:44:12 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:44:13 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:44:13 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:44:15 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:44:15 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:16 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:16 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:44:17 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:44:17 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:44:18 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:18 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:44:19 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = UNKNOWN_VARIABLE
+
+--- Start Module: slapaf at Mon Jul 27 11:44:19 2026 ---
+
+**********************************************************************************************************************
+*                                    Energy Statistics for Geometry Optimization                                     *
+**********************************************************************************************************************
+                       Energy     Grad      Grad              Step                 Estimated   Geom       Hessian     
+Iter      Energy       Change     Norm      Max    Element    Max     Element     Final Energy Update Update   Index  
+  1    -94.39721903  0.00000000 0.122918 -0.087787 nrc005  -0.129599  nrc006      -94.40800117 RS-RFO  None      0    
+  2    -94.41173138 -0.01451235 0.037875 -0.029329 nrc005  -0.057475  nrc005      -94.41300797 RS-RFO  BFGS      0    
+  3    -94.41295828 -0.00122690 0.002969 -0.001676 nrc001  -0.002399  nrc006      -94.41296252 RS-RFO  BFGS      0    
+  4    -94.41296343 -0.00000515 0.000492 -0.000276 nrc006  -0.001432  nrc006      -94.41296376 RS-RFO  BFGS      0    
+
+       +----------------------------------+----------------------------------+
+       +    Cartesian Displacements       +    Gradient in internals         +
+       +  Value      Threshold Converged? +  Value      Threshold Converged? +
+ +-----+----------------------------------+----------------------------------+
+ + RMS + 6.8594E-04  1.2000E-03     Yes   + 2.1998E-04  3.0000E-04     Yes   +
+ +-----+----------------------------------+----------------------------------+
+ + Max + 1.0494E-03  1.8000E-03     Yes   + 2.7632E-04  4.5000E-04     Yes   +
+ +-----+----------------------------------+----------------------------------+
+
+ Geometry is converged in   4 iterations to a Minimum Structure
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+
+++ Geometry section
+
+********************************************************************************
+  Geometrical information of the final structure
+********************************************************************************
+
+  NOTE: on convergence the final predicted structure will be printed here.
+  This is not identical to the structure printed in the head of the output.
+
+ *********************************************************
+ * Nuclear coordinates of the final structure / bohr     *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000        0.000006        0.066560
+  N2               0.000000        0.000002        2.472061
+  H3               1.777864       -0.000001       -0.944104
+  H4               1.626257       -0.000003        3.473143
+  H5              -1.626257        0.000000        3.473143
+  H6              -1.777864       -0.000004       -0.944104
+
+
+ *********************************************************
+ * Nuclear coordinates of the final structure / angstrom *
+ *********************************************************
+  ATOM              X               Y               Z     
+  C1               0.000000        0.000003        0.035222
+  N2               0.000000        0.000001        1.308159
+  H3               0.940805       -0.000000       -0.499599
+  H4               0.860578       -0.000002        1.837908
+  H5              -0.860578        0.000000        1.837908
+  H6              -0.940805       -0.000002       -0.499599
+
+
+                    *************************************** 
+                    *    InterNuclear Distances / bohr    * 
+                    *************************************** 
+
+               1 C1            2 N2            3 H3            4 H4            5 H5    
+    1 C1       0.000000
+    2 N2       2.405501        0.000000
+    3 H3       2.045054        3.851102        0.000000
+    4 H4       3.774854        1.909679        4.419849        0.000000
+    5 H5       3.774854        1.909679        5.576748        3.252513        0.000000
+    6 H6       2.045054        3.851102        3.555729        5.576748        4.419849
+
+               6 H6    
+    6 H6       0.000000
+
+                    ******************************************* 
+                    *    InterNuclear Distances / angstrom    * 
+                    ******************************************* 
+
+               1 C1            2 N2            3 H3            4 H4            5 H5    
+    1 C1       0.000000
+    2 N2       1.272937        0.000000
+    3 H3       1.082196        2.037916        0.000000
+    4 H4       1.997567        1.010559        2.338883        0.000000
+    5 H5       1.997567        1.010559        2.951088        1.721156        0.000000
+    6 H6       1.082196        2.037916        1.881611        2.951088        2.338883
+
+               6 H6    
+    6 H6       0.000000
+
+                    ************************************** 
+                    *    Valence Bond Angles / degree    * 
+                    ************************************** 
+                          Atom centers                 Phi
+                      2 N2       1 C1       3 H3       119.62
+                      2 N2       1 C1       6 H6       119.62
+                      3 H3       1 C1       6 H6       120.77
+                      1 C1       2 N2       4 H4       121.62
+                      1 C1       2 N2       5 H5       121.62
+                      4 H4       2 N2       5 H5       116.77
+
+           ***************************************************************
+           *              Valence Dihedral Angles / degree               *
+           ***************************************************************
+                    Atom centers                       Phi1     Phi2     Theta 
+           3 H3       1 C1       2 N2       4 H4        119.62   121.62     0.00
+           3 H3       1 C1       2 N2       5 H5        119.62   121.62  -180.00
+           4 H4       2 N2       1 C1       6 H6        121.62   119.62   180.00
+           5 H5       2 N2       1 C1       6 H6        121.62   119.62    -0.00
+--
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:20 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: last_energy at Mon Jul 27 11:44:20 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                            &LAST_ENERGY
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731215
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+
+    Geometry read from RUNFILE
+
+               SEWARD will generate:
+                  Multipole Moment integrals up to order  2
+                  Kinetic Energy integrals
+                  Nuclear Attraction integrals (point charge)
+                  One-Electron Hamiltonian integrals
+                  Velocity integrals
+                  Orbital angular momentum around (  0.0000   0.0000   1.3587 )
+                  Velocity quadrupole around (  0.0000   0.0000   1.3489 )
+                  RI decomposed two-electron repulsion integrals stored Cholesky style
+                   - acCD auxiliary basis
+                   - CD Threshold:   1.00E-04
+
+ Title:
+                                           Molcas-Opt                                   
+
+
+                   Integrals are discarded if absolute value <: 1.00E-14
+                   Integral cutoff threshold is set to       <: 1.00E-16
+
+            Nuclear Potential Energy             38.87294896 au
+
+
+      Basis set specifications :
+      Symmetry species         a  
+      Basis functions           48
+
+
+      Header of the ONEINT file:
+      --------------------------
+      
+      Integrals generated by Gateway/Seward, Mon Jul 27 11:44:21 2026
+
+
+      OrdInt status: non-squared
+
+
+      Cartesian coordinates in angstrom:
+      -----------------------------------------------------
+      No.  Label        X            Y            Z        
+      -----------------------------------------------------
+       1   C1         0.00000000   0.00000299   0.03522201
+       2   N2         0.00000000   0.00000088   1.30815853
+       3   H3         0.94080528  -0.00000044  -0.49959852
+       4   H4         0.86057791  -0.00000158   1.83790825
+       5   H5        -0.86057791   0.00000021   1.83790825
+       6   H6        -0.94080528  -0.00000207  -0.49959852
+      -----------------------------------------------------
+      Nuclear repulsion energy =   38.87294896
+
+++    Wave function specifications:
+      -----------------------------
+
+      Number of closed shell electrons          10
+      Number of electrons in active shells       6
+      Max number of holes in RAS1 space          0
+      Max nr of electrons in RAS3 space          0
+      Number of inactive orbitals                5
+      Number of active orbitals                  4
+      Number of secondary orbitals              39
+      Spin quantum number                      0.0
+      State symmetry                             1
+--
+
+++    Orbital specifications:
+      -----------------------
+
+      Symmetry species                           1
+                                                 a
+      Frozen orbitals                            0
+      Inactive orbitals                          5
+      Active orbitals                            4
+      RAS1 orbitals                              0
+      RAS2 orbitals                              4
+      RAS3 orbitals                              0
+      Secondary orbitals                        39
+      Deleted orbitals                           0
+      Number of basis functions                 48
+--
+
+++    CI expansion specifications:
+      ----------------------------
+
+      Number of CSFs                            10
+      Number of spin combinations               10
+      Number of determinants                    16
+      Number of root(s) required                 4
+      Root chosen for geometry opt.              1
+      CI roots used                              1     2     3     4
+      weights                                0.250 0.250 0.250 0.250
+      highest root included in the CI            4
+      max. size of the explicit Hamiltonian     10
+--
+
+++    Optimization specifications:
+      ----------------------------
+
+      RASSCF algorithm: LK RI/DF
+      Maximum number of macro iterations       200
+      Maximum number of SX iterations          100
+      Threshold for RASSCF energy            1.000E-08
+      Threshold for max MO rotation          1.000E-01
+      Threshold for max BLB element          1.000E-04
+      Level shift parameter                  5.000E-01
+      Make Quasi-Newton update
+--
+      Starting CI array(s) will be read from file
+
+      File JOBOLD not found -- use JOBIPH.
+      The MO-coefficients are taken from the file:
+      JOBIPH
+      Title:(No title given)                                                        
+
+      Total molecular charge    1.00
+
+      ************************************************************************************************************************
+      *                                                                                                                      *
+      *                                            Wave function control section                                             *
+      *                                                                                                                      *
+      ************************************************************************************************************************
+
+
+                                         RASSCF iterations: Energy and convergence statistics
+                                         ----------------------------------------------------
+
+      Iter CI   SX   CI       RASSCF       Energy    max ROT     max BLB   max BLB  Level Ln srch  Step   QN   Walltime
+          iter iter root      energy       change     param      element    value   shift minimum  type update hh:mm:ss
+ Nr of preliminary CI iterations:   1
+        1   1    4    0   -94.11823772    0.00E+00  -7.82E-05    5  28 1 -1.92E-04*  0.18   0.00    SX    NO    0:00:00
+        2   1    3    0   -94.11823780   -7.08E-08* -4.22E-05    5  28 1 -4.44E-05   0.18   0.00    SX    NO    0:00:00
+        3   1    3    0   -94.11823780   -6.00E-09  -2.51E-05    5  28 1 -1.29E-05   0.18   0.00    SX    NO    0:00:00
+        4   1    3    0   -94.11823780   -8.87E-10  -1.68E-05    6  19 1  3.47E-06   0.18   0.00    SX    NO    0:00:00
+      Convergence after  4 iterations
+        5   1    3    0   -94.11823780   -2.25E-10  -1.68E-05    4   6 1 -1.69E-06   0.18   0.00    SX    NO    0:00:00
+
+      ************************************************************************************************************************
+                                                      Wave function printout:
+                       occupation of active orbitals, and spin coupling of open shells (u,d: Spin up or down)
+      ************************************************************************************************************************
+
+      Note: transformation to natural orbitals
+      has been made, which may change the order of the CSFs.
+
+      printout of CI-coefficients larger than  0.05 for root  1
+      energy=     -94.412964
+      conf/sym  1111     Coeff  Weight
+             1  2220  -0.95127 0.90492
+             4  2u2d  -0.28249 0.07980
+             8  2022   0.12162 0.01479
+
+      printout of CI-coefficients larger than  0.05 for root  2
+      energy=     -94.068265
+      conf/sym  1111     Coeff  Weight
+             2  22ud   0.96517 0.93155
+             5  2ud2   0.26163 0.06845
+
+      printout of CI-coefficients larger than  0.05 for root  3
+      energy=     -94.020437
+      conf/sym  1111     Coeff  Weight
+             1  2220   0.29841 0.08905
+             4  2u2d  -0.94119 0.88584
+             8  2022   0.15435 0.02382
+
+      printout of CI-coefficients larger than  0.05 for root  4
+      energy=     -93.971286
+      conf/sym  1111     Coeff  Weight
+             6  u22d   0.99983 0.99965
+
+      Natural orbitals and occupation numbers for root  1
+      sym 1:   1.999700   1.950322   1.999330   0.050649
+
+      Natural orbitals and occupation numbers for root  2
+      sym 1:   2.000000   2.000000   1.000000   1.000000
+
+      Natural orbitals and occupation numbers for root  3
+      sym 1:   1.999634   1.607456   1.997782   0.395127
+
+      Natural orbitals and occupation numbers for root  4
+      sym 1:   0.999999   2.000000   2.000000   1.000001
+
+      ************************************************************************************************************************
+      *                                                                                                                      *
+      *                                                    Final results                                                     *
+      *                                                                                                                      *
+      ************************************************************************************************************************
+
+
+++    Final optimization conditions:
+      ------------------------------
+
+      Average CI energy                             -94.11823780
+      RASSCF energy for state  1                    -94.41296396
+      Super-CI energy                                -0.00000000
+      RASSCF energy change                           -0.00000000
+      Max change in MO coefficients               1.149E-05
+      Max non-diagonal density matrix element    -1.679E-05
+      Maximum BLB matrix element                 -1.692E-06
+      (orbital pair   4,   6 in symmetry   1)
+      Norm of electronic gradient            7.509E-02
+--
+
+
+      Final state energy(ies):
+      ------------------------
+
+::    RASSCF root number  1 Total energy:    -94.41296396
+::    RASSCF root number  2 Total energy:    -94.06826478
+::    RASSCF root number  3 Total energy:    -94.02043666
+::    RASSCF root number  4 Total energy:    -93.97128580
+
+++    Molecular orbitals:
+      -------------------
+
+      Pseudonatural active orbitals and approximate occupation numbers
+
+
+
+
+      Molecular orbitals for symmetry species 1: a  
+
+
+      Orbital                 1         2         3         4         5         6         7         8         9        10
+      Energy           -15.9065  -11.5882   -1.5491   -1.1670   -1.0281   -0.9275   -0.7430   -0.8054   -0.2784   -0.0457
+      Occ. No.           2.0000    2.0000    2.0000    2.0000    2.0000    1.7498    1.7221    1.7493    0.7788    0.0000
+
+     1 C1     1s         0.0000    1.0013   -0.0141    0.0088   -0.0000   -0.0068    0.0000    0.0000   -0.0000    0.0151
+     2 C1     2s        -0.0002    0.0082    0.4307   -0.7003   -0.0000    0.0057    0.0000   -0.0000   -0.0000   -0.1115
+     3 C1     *s         0.0029   -0.0046   -0.1673    0.1666   -0.0000    0.0986    0.0000   -0.0000   -0.0000   -0.8144
+     4 C1     2px       -0.0000    0.0000   -0.0000   -0.0000    0.2387   -0.0000   -0.0000   -0.6682    0.0000    0.0000
+     5 C1     *px       -0.0000   -0.0000    0.0000    0.0000   -0.0424    0.0000    0.0000    0.1411    0.0000    0.0000
+     6 C1     2py       -0.0000   -0.0000   -0.0000    0.0000   -0.0000   -0.0000    0.3262   -0.0000   -0.9283    0.0000
+     7 C1     *py       -0.0000    0.0000    0.0000   -0.0000    0.0000    0.0000   -0.0780    0.0000   -0.1276    0.0000
+     8 C1     2pz       -0.0004    0.0017    0.1700    0.1177   -0.0000   -0.6386    0.0000    0.0000    0.0000    0.1900
+     9 C1     *pz        0.0017    0.0010   -0.0838   -0.0122    0.0000    0.2017   -0.0000   -0.0000    0.0000    0.2641
+    10 C1     *d2-       0.0000    0.0000   -0.0000   -0.0000   -0.0000    0.0000    0.0000    0.0000   -0.0000   -0.0000
+    11 C1     *d1-       0.0000    0.0000   -0.0000   -0.0000   -0.0000    0.0000    0.0439   -0.0000    0.0175   -0.0000
+    12 C1     *d0       -0.0006    0.0007    0.0283    0.0051   -0.0000   -0.0371    0.0000    0.0000    0.0000   -0.0101
+    13 C1     *d1+      -0.0000   -0.0000   -0.0000   -0.0000    0.0349    0.0000    0.0000    0.0270    0.0000    0.0000
+    14 C1     *d2+       0.0001    0.0007   -0.0012   -0.0075    0.0000    0.0125    0.0000   -0.0000    0.0000   -0.0014
+    15 N2     1s         1.0012   -0.0002   -0.0148   -0.0016   -0.0000   -0.0018    0.0000    0.0000    0.0000    0.0320
+    16 N2     2s         0.0066    0.0006    0.7789    0.3271    0.0000   -0.1073    0.0000    0.0000    0.0000   -0.2457
+    17 N2     *s        -0.0073   -0.0037   -0.1553   -0.0458    0.0000    0.0294    0.0000   -0.0000    0.0000   -0.9944
+    18 N2     2px       -0.0000   -0.0000   -0.0000   -0.0000    0.6849    0.0000    0.0000    0.2344    0.0000    0.0000
+    19 N2     *px        0.0000    0.0000    0.0000    0.0000   -0.1348   -0.0000   -0.0000   -0.0393    0.0000    0.0000
+    20 N2     2py       -0.0000    0.0000    0.0000   -0.0000   -0.0000   -0.0000    0.8412   -0.0000    0.4141    0.0000
+    21 N2     *py       -0.0000   -0.0000    0.0000    0.0000    0.0000    0.0000    0.0282    0.0000    0.2008    0.0000
+    22 N2     2pz       -0.0008    0.0003   -0.0601    0.3372    0.0000    0.6268    0.0000   -0.0000   -0.0000   -0.1848
+    23 N2     *pz        0.0022    0.0023   -0.0038   -0.0684   -0.0000   -0.1149    0.0000    0.0000    0.0000   -0.2924
+    24 N2     *d2-      -0.0000    0.0000   -0.0000   -0.0000   -0.0000   -0.0000   -0.0000   -0.0000   -0.0000    0.0000
+    25 N2     *d1-      -0.0000    0.0000   -0.0000    0.0000   -0.0000    0.0000   -0.0197    0.0000    0.0218   -0.0000
+    26 N2     *d0        0.0002   -0.0003    0.0119   -0.0155   -0.0000   -0.0199   -0.0000    0.0000    0.0000   -0.0037
+    27 N2     *d1+      -0.0000   -0.0000   -0.0000   -0.0000    0.0047    0.0000    0.0000    0.0253   -0.0000   -0.0000
+    28 N2     *d2+       0.0003   -0.0004    0.0029    0.0034    0.0000    0.0078   -0.0000   -0.0000    0.0000   -0.0050
+    29 H3     1s        -0.0003   -0.0006    0.1166   -0.3457    0.1243    0.2978   -0.0000   -0.5520    0.0000    0.0318
+    30 H3     *s         0.0002    0.0017   -0.0594    0.1633   -0.0763   -0.1164    0.0000    0.2083   -0.0000    0.5533
+    31 H3     *px       -0.0001    0.0003   -0.0093    0.0241   -0.0104   -0.0172    0.0000    0.0161   -0.0000    0.0030
+    32 H3     *py        0.0000   -0.0000    0.0000   -0.0000    0.0000    0.0000    0.0081   -0.0000   -0.0240   -0.0000
+    33 H3     *pz       -0.0002   -0.0003    0.0088   -0.0121    0.0038    0.0004   -0.0000   -0.0195    0.0000    0.0110
+    34 H4     1s        -0.0003    0.0006    0.2595    0.2670    0.4982    0.2494    0.0000    0.2488   -0.0000    0.1497
+    35 H4     *s         0.0004   -0.0005   -0.1256   -0.1251   -0.2105   -0.0958   -0.0000   -0.0723   -0.0000    0.7433
+    36 H4     *px        0.0006   -0.0001   -0.0275   -0.0238   -0.0229   -0.0183    0.0000   -0.0064    0.0000   -0.0082
+    37 H4     *py       -0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0218   -0.0000    0.0138    0.0000
+    38 H4     *pz        0.0002   -0.0005   -0.0152   -0.0086   -0.0275    0.0030    0.0000   -0.0088    0.0000   -0.0072
+    39 H5     1s        -0.0003    0.0006    0.2595    0.2670   -0.4982    0.2494   -0.0000   -0.2488    0.0000    0.1497
+    40 H5     *s         0.0004   -0.0005   -0.1256   -0.1251    0.2105   -0.0958    0.0000    0.0723   -0.0000    0.7433
+    41 H5     *px       -0.0006    0.0001    0.0275    0.0238   -0.0229    0.0183   -0.0000   -0.0064   -0.0000    0.0082
+    42 H5     *py       -0.0000    0.0000    0.0000   -0.0000   -0.0000   -0.0000    0.0218   -0.0000    0.0138    0.0000
+    43 H5     *pz        0.0002   -0.0005   -0.0152   -0.0086    0.0275    0.0030    0.0000    0.0088    0.0000   -0.0072
+    44 H6     1s        -0.0003   -0.0006    0.1166   -0.3457   -0.1243    0.2978    0.0000    0.5520    0.0000    0.0318
+    45 H6     *s         0.0002    0.0017   -0.0594    0.1633    0.0763   -0.1164   -0.0000   -0.2083   -0.0000    0.5533
+    46 H6     *px        0.0001   -0.0003    0.0093   -0.0241   -0.0104    0.0172   -0.0000    0.0161    0.0000   -0.0030
+    47 H6     *py        0.0000   -0.0000    0.0000   -0.0000   -0.0000    0.0000    0.0081    0.0000   -0.0240   -0.0000
+    48 H6     *pz       -0.0002   -0.0003    0.0088   -0.0121   -0.0038    0.0004    0.0000    0.0195    0.0000    0.0110
+
+
+      Orbital                11        12        13
+      Energy            -0.0137    0.0026    0.0839
+      Occ. No.           0.0000    0.0000    0.0000
+
+     1 C1     1s         0.0000    0.0311    0.0000
+     2 C1     2s        -0.0000   -0.3314    0.0000
+     3 C1     *s        -0.0000   -1.4758   -0.0000
+     4 C1     2px        0.3290   -0.0000    0.3713
+     5 C1     *px        0.6016   -0.0000    1.1277
+     6 C1     2py        0.0000    0.0000    0.0000
+     7 C1     *py        0.0000    0.0000    0.0000
+     8 C1     2pz       -0.0000    0.1424    0.0000
+     9 C1     *pz       -0.0000    0.4090   -0.0000
+    10 C1     *d2-      -0.0000    0.0000   -0.0000
+    11 C1     *d1-      -0.0000   -0.0000    0.0000
+    12 C1     *d0        0.0000    0.0110    0.0000
+    13 C1     *d1+       0.0236   -0.0000    0.0053
+    14 C1     *d2+      -0.0000   -0.0088   -0.0000
+    15 N2     1s        -0.0000   -0.0167   -0.0000
+    16 N2     2s         0.0000    0.1834   -0.0000
+    17 N2     *s         0.0000    0.5701    0.0000
+    18 N2     2px        0.3338   -0.0000   -0.3073
+    19 N2     *px        0.3087   -0.0000   -0.6725
+    20 N2     2py       -0.0000   -0.0000    0.0000
+    21 N2     *py       -0.0000   -0.0000    0.0000
+    22 N2     2pz        0.0000    0.0404   -0.0000
+    23 N2     *pz        0.0000    0.0775   -0.0000
+    24 N2     *d2-       0.0000    0.0000    0.0000
+    25 N2     *d1-       0.0000   -0.0000   -0.0000
+    26 N2     *d0       -0.0000   -0.0094   -0.0000
+    27 N2     *d1+      -0.0254    0.0000   -0.0255
+    28 N2     *d2+       0.0000    0.0086    0.0000
+    29 H3     1s        -0.1106    0.1176   -0.0184
+    30 H3     *s        -0.9541    1.1894   -1.6155
+    31 H3     *px        0.0013   -0.0072    0.0007
+    32 H3     *py        0.0000    0.0000    0.0000
+    33 H3     *pz       -0.0013    0.0006   -0.0001
+    34 H4     1s        -0.1630   -0.0822    0.0189
+    35 H4     *s        -0.9082   -0.5268    1.0649
+    36 H4     *px        0.0004    0.0109   -0.0120
+    37 H4     *py        0.0000   -0.0000    0.0000
+    38 H4     *pz       -0.0025   -0.0058   -0.0125
+    39 H5     1s         0.1630   -0.0822   -0.0189
+    40 H5     *s         0.9082   -0.5268   -1.0649
+    41 H5     *px        0.0004   -0.0109   -0.0120
+    42 H5     *py       -0.0000   -0.0000   -0.0000
+    43 H5     *pz        0.0025   -0.0058    0.0125
+    44 H6     1s         0.1106    0.1176    0.0184
+    45 H6     *s         0.9541    1.1894    1.6155
+    46 H6     *px        0.0013    0.0072    0.0007
+    47 H6     *py       -0.0000    0.0000   -0.0000
+    48 H6     *pz        0.0013    0.0006    0.0001
+--
+
+      Von Neumann Entropy (Root   1) =  0.17039
+
+
+      Mulliken population analysis for root number:  1
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0028  2.0025  1.2348  1.0997  1.0997  1.2348
+      2s       1.5385  1.6434  0.0000  0.0000  0.0000  0.0000
+      2px      1.3277  1.3703  0.0000  0.0000  0.0000  0.0000
+      2pz      1.1151  1.2994  0.0000  0.0000  0.0000  0.0000
+      2py      0.6798  1.3400  0.0000  0.0000  0.0000  0.0000
+      *s      -0.3916 -0.3041 -0.4308 -0.3687 -0.3687 -0.4308
+      *px     -0.2301 -0.2382  0.0219  0.0331  0.0331  0.0219
+      *pz     -0.2611 -0.2012  0.0103  0.0179  0.0179  0.0103
+      *py     -0.0648 -0.0103  0.0038  0.0099  0.0099  0.0038
+      *d2+     0.0045  0.0020  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0319  0.0129  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0277  0.0103  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0228  0.0059  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    5.8032  6.9329  0.8401  0.7919  0.7919  0.8401
+
+      N-E      0.1968  0.0671  0.1599  0.2081  0.2081  0.1599
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  1
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                   X= -5.3417E-09               Y= -4.3708E-06               Z=  6.1992E-01           Total=  6.1992E-01
+      Center of Charge (angstrom)
+                     X=   -0.00000000               Y=    0.00000057               Z=    0.84286177
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                  XX= -7.3081E+00              XY= -1.4884E-06              XZ= -2.0077E-09              YY= -1.2075E+01
+                  YZ= -5.9255E-06              ZZ= -4.7400E+00
+      In traceless form (debye*angstrom)
+                  XX=  1.0994E+00              XY= -2.2326E-06              XZ= -3.0116E-09              YY= -6.0510E+00
+                  YZ= -8.8882E-06              ZZ=  4.9516E+00
+--
+
+      Von Neumann Entropy (Root   2) =  1.00000
+
+
+      Mulliken population analysis for root number:  2
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0028  2.0025  0.9598  1.0646  1.0646  0.9598
+      2s       1.5385  1.6434  0.0000  0.0000  0.0000  0.0000
+      2px      0.7783  1.3313  0.0000  0.0000  0.0000  0.0000
+      2pz      1.1152  1.2996  0.0000  0.0000  0.0000  0.0000
+      2py      1.3663  1.5222  0.0000  0.0000  0.0000  0.0000
+      *s      -0.3916 -0.3041 -0.3646 -0.3659 -0.3659 -0.3646
+      *px     -0.1364 -0.2366  0.0204  0.0329  0.0329  0.0204
+      *pz     -0.2611 -0.2012  0.0074  0.0177  0.0177  0.0074
+      *py      0.0091  0.0164  0.0107  0.0129  0.0129  0.0107
+      *d2+     0.0045  0.0020  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0234  0.0069  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0277  0.0103  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0283  0.0105  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    6.1049  7.1032  0.6337  0.7623  0.7623  0.6337
+
+      N-E     -0.1049 -0.1032  0.3663  0.2377  0.2377  0.3663
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  2
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                   X= -1.1986E-08               Y= -2.5513E-05               Z= -8.5984E-01           Total=  8.5984E-01
+      Center of Charge (angstrom)
+                     X=   -0.00000000               Y=   -0.00000383               Z=    0.53478498
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                  XX= -4.8138E+00              XY= -8.8442E-07              XZ=  1.3181E-09              YY= -1.4129E+01
+                  YZ=  1.0251E-05              ZZ= -3.4160E+00
+      In traceless form (debye*angstrom)
+                  XX=  3.9589E+00              XY= -1.3266E-06              XZ=  1.9772E-09              YY= -1.0015E+01
+                  YZ=  1.5376E-05              ZZ=  6.0556E+00
+--
+
+      Von Neumann Entropy (Root   3) =  0.71744
+
+
+      Mulliken population analysis for root number:  3
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0028  2.0025  1.2344  1.0996  1.0996  1.2344
+      2s       1.5385  1.6434  0.0000  0.0000  0.0000  0.0000
+      2px      1.3268  1.3702  0.0000  0.0000  0.0000  0.0000
+      2pz      1.1151  1.2994  0.0000  0.0000  0.0000  0.0000
+      2py      0.4444  1.3312  0.0000  0.0000  0.0000  0.0000
+      *s      -0.3916 -0.3041 -0.4307 -0.3687 -0.3687 -0.4307
+      *px     -0.2299 -0.2382  0.0219  0.0331  0.0331  0.0219
+      *pz     -0.2610 -0.2012  0.0103  0.0179  0.0179  0.0103
+      *py      0.0179  0.1409  0.0050  0.0136  0.0136  0.0050
+      *d2+     0.0045  0.0020  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0318  0.0129  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0277  0.0103  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0283  0.0027  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    5.6553  7.0720  0.8409  0.7955  0.7955  0.8409
+
+      N-E      0.3447 -0.0720  0.1591  0.2045  0.2045  0.1591
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  3
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                   X= -5.5528E-09               Y= -6.3600E-06               Z=  1.5697E-01           Total=  1.5697E-01
+      Center of Charge (angstrom)
+                     X=   -0.00000000               Y=    0.00000015               Z=    0.74647773
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                  XX= -7.3014E+00              XY= -4.6320E-07              XZ= -2.9776E-09              YY= -1.1973E+01
+                  YZ= -2.6461E-06              ZZ= -6.6785E+00
+      In traceless form (debye*angstrom)
+                  XX=  2.0246E+00              XY= -6.9480E-07              XZ= -4.4663E-09              YY= -4.9835E+00
+                  YZ= -3.9691E-06              ZZ=  2.9589E+00
+--
+
+      Von Neumann Entropy (Root   4) =  1.00000
+
+
+      Mulliken population analysis for root number:  4
+      -----------------------------------------------
+
+
+++    Molecular charges:
+      ------------------
+
+      Mulliken charges per centre and basis function type
+      ---------------------------------------------------
+
+                C1      N2      H3      H4      H5      H6    
+      1s       2.0028  2.0025  1.1351  1.0385  1.0385  1.1351
+      2s       1.5378  1.6410  0.0000  0.0000  0.0000  0.0000
+      2px      1.3280  1.3703  0.0000  0.0000  0.0000  0.0000
+      2pz      0.6739  0.8686  0.0000  0.0000  0.0000  0.0000
+      2py      1.1438  1.7134  0.0000  0.0000  0.0000  0.0000
+      *s      -0.4090 -0.3050 -0.3987 -0.3505 -0.3505 -0.3987
+      *px     -0.2301 -0.2382  0.0193  0.0306  0.0306  0.0193
+      *pz     -0.1772 -0.1484  0.0103  0.0176  0.0176  0.0103
+      *py     -0.0040  0.0573  0.0091  0.0150  0.0150  0.0091
+      *d2+     0.0031  0.0014  0.0000  0.0000  0.0000  0.0000
+      *d1+     0.0319  0.0129  0.0000  0.0000  0.0000  0.0000
+      *d0      0.0212  0.0080  0.0000  0.0000  0.0000  0.0000
+      *d1-     0.0326  0.0087  0.0000  0.0000  0.0000  0.0000
+      *d2-     0.0000  0.0000  0.0000  0.0000  0.0000  0.0000
+      Total    5.9547  6.9925  0.7752  0.7513  0.7513  0.7752
+
+      N-E      0.0453  0.0075  0.2248  0.2487  0.2487  0.2248
+
+      Total electronic charge=   16.000000
+
+      Total            charge=    1.000000
+--
+
+
+
+      Expectation values of various properties for root number:  4
+      -----------------------------------------------------------
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                   X= -9.0508E-09               Y= -2.0883E-05               Z=  6.3260E-01           Total=  6.3260E-01
+      Center of Charge (angstrom)
+                     X=   -0.00000000               Y=   -0.00000287               Z=    0.84550208
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                  XX= -6.9267E+00              XY= -1.2606E-06              XZ= -5.6342E-09              YY= -1.4020E+01
+                  YZ=  5.8917E-06              ZZ= -3.9495E+00
+      In traceless form (debye*angstrom)
+                  XX=  2.0582E+00              XY= -1.8908E-06              XZ= -8.4513E-09              YY= -8.5821E+00
+                  YZ=  8.8376E-06              ZZ=  6.5240E+00
+--
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+
+      Input file to MOLDEN was generated!
+
+      Average orbitals are written to the RASORB file
+      Natural orbitals for root   1 are written to the RASORB.1 file
+      Natural orbitals for root   2 are written to the RASORB.2 file
+      Natural orbitals for root   3 are written to the RASORB.3 file
+      Natural orbitals for root   4 are written to the RASORB.4 file
+      Spin density orbitals for root   1 are written to the SPDORB.1 file
+      Spin density orbitals for root   2 are written to the SPDORB.2 file
+      Spin density orbitals for root   3 are written to the SPDORB.3 file
+      Spin density orbitals for root   4 are written to the SPDORB.4 file
+
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: last_energy at Mon Jul 27 11:44:23 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module last_energy spent 2 seconds ---
+
+>>> END DO
+
+--- Start Module: mckinley at Mon Jul 27 11:44:23 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                             &MCKINLEY
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731220
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: mckinley at Mon Jul 27 11:44:24 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:44:24 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                               &MCLR
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731223
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+ No .RLXPT2  or MCKINT  , I hope that is OK
+ Seward mode is assumed, reading perturbation from ONEINT
+ OrdInt status: non-squared
+
+++   Wave function specifications:
+     -----------------------------
+
+     Number of closed shell electrons             10
+     Number of electrons in active shells          6
+     Max number of holes in RAS1 space             0
+     Max number of electrons in RAS3 space         0
+     Number of inactive orbitals                   5
+     Number of active orbitals                     4
+     Number of secondary orbitals                 39
+     Spin quantum number                         0.0
+     State symmetry                                1
+     Number of CI roots                            4
+     States considered                             1     2     3     4
+     Weights                                   0.250 0.250 0.250 0.250
+
+     Symmetry species                              1
+     Skipped sym. species                          0
+     Frozen orbitals                               0
+     Inactive orbitals                             5
+     Active orbitals                               4
+     RAS1 orbitals                                 0
+     RAS2 orbitals                                 4
+     RAS3 orbitals                                 0
+     Deleted orbitals                              0
+     Number of basis functions                    48
+     Number of orbitals                           48
+     Number of configurations                     10
+     Number of combinations                       10
+     Natural orbitals are used in the last CI
+     RASSCF state energy =            -94.4129639600
+     Size of explicit Hamiltonian in PCG:        100
+--
+
+     Convergence threshold=               1.0000E-04
+     Max number of iterations in PCG:            200
+     Using the Cho-MO Algorithm
+     Lagrangian multipliers are calculated for state no.   1
+
+
+  Reordering of the Cholesky vectors to full storage.
+  Elapsed time for the reordering section:    9.9999999999999811E-003
+  CPU time for the reordering section:    9.9999999999999811E-003
+
+ TIMING INFORMATION:   CPU(s)   %CPU   Elapsed(s)
+ Transformation          0.00    0.0         0.01
+ Generation              0.02    2.0         0.01
+ TOTAL                   0.04    4.0         0.04
+
+        Iteration       Delta           Res(kappa)       Res(CI)          DeltaK           DeltaC
+            1      9.023832994E-02  3.307423600E-02  6.231922336E-03  2.995241989E-04  1.291598943E-04
+            2      6.604308965E-03  1.044025085E-02  2.036628837E-03  2.006397888E-05  1.131029635E-05
+            3      2.058440799E-03  6.483928348E-03  9.043203930E-04  6.923018760E-06  2.855761811E-06
+            4      3.601836481E-04  2.261375151E-03  4.215251270E-04  1.240243749E-06  4.708362394E-07
+            5      1.042689138E-04  1.187832533E-03  2.505653682E-04  3.364779068E-07  1.588595492E-07
+            6      1.751465931E-05  4.589973669E-04  9.044952474E-05  6.178788641E-08  2.141684322E-08
+            7      7.341415200E-07  1.222626118E-04  1.985578083E-05  2.727290588E-09  7.603048941E-10
+      Perturbation no:    1 converged in    7 steps.
+
+
+++    Molecular properties:
+      ---------------------
+
+      Charge (e):
+                      =    1.0000
+      Dipole Moment (debye):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                   X= -6.7213E-09               Y= -8.4381E-06               Z=  5.2069E-01           Total=  5.2069E-01
+      Center of Charge (angstrom)
+                     X=   -0.00000000               Y=   -0.00000028               Z=    0.82220178
+      Quadrupole Moment (debye*angstrom):
+      Origin of the operator (angstrom)=    0.0000    0.0000    0.7138
+                  XX= -7.2562E+00              XY= -1.6952E-06              XZ= -1.4732E-09              YY= -1.2079E+01
+                  YZ= -3.8337E-06              ZZ= -4.8044E+00
+      In traceless form (debye*angstrom)
+                  XX=  1.1853E+00              XY= -2.5428E-06              XZ= -2.2099E-09              YY= -6.0483E+00
+                  YZ= -5.7505E-06              ZZ=  4.8630E+00
+--
+
+
+      The response parameters are written to the file RESP.
+ ###############################################################################
+ ###############################################################################
+ ###                                                                         ###
+ ###                                                                         ###
+ ###    WARNING: RunFile label nBas                                          ###
+ ###    was used       61 times                                              ###
+ ###                                                                         ###
+ ###                                                                         ###
+ ###############################################################################
+ ###############################################################################
+--- Stop Module: mclr at Mon Jul 27 11:44:25 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: slapaf at Mon Jul 27 11:44:25 2026 ---
+
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &SLAPAF
+
+                       only a single process is used, running in SERIAL mode
+                       available to each process: 2.0 GB of memory, 1 thread?
+                                            pid: 731226
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+
+
+++       Slapaf input parameters:
+         ------------------------
+
+ Maximum number of iterations:                 0
+ Convergence test a la Schlegel.
+ Convergence criterion on gradient/para.<=: 3.0E-04
+ Convergence criterion on step/parameter<=: 3.0E-04
+ Convergence criterion on energy change <=: 0.0E+00
+ Parameters for step-restricted optimization
+ Maximum step length (initial seed):       3.00E-01
+
+ -RFO activated with parameters:
+   Maximum number of data points used in RFO:      5
+ Line search is performed
+
+
+ -Optimization for transition state.
+  Optimization method: RS-P-RFO
+  No mode to follow is specified!
+  Optimization will follow mode with the lowest eigenvalue.
+
+ -Initial Hessian guess is estimated with finite differences.
+    Two point symmetric formula, Delta= 1.00E-02
+
+ -Hessian update method: Broyden-Fletcher-Goldfarb-Shanno
+  Maximum number of points in Hessian update:  5
+
+ -Relaxation will be done on non-redundant internal coordinates, based on
+  force constant weighted redundant internal coordinates.
+
+--
+
+ ******************************************
+ * Statistics of the internal coordinates *
+ ******************************************
+ Translations and Rotations:         0
+ Bonds                     :         5
+ Angles                    :         6
+ Torsions                  :         4
+ Out-of-plane angles       :         4
+
+  Accumulate the gradient for selected numerical differentiation.
+     1 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:26 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+--- Start Module: seward at Mon Jul 27 11:44:26 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:44:27 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:44:27 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:44:29 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:44:29 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:30 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:30 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:44:31 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:44:31 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:44:32 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:32 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:44:34 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:44:34 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     2 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:34 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:44:34 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:44:34 2026 /rc=_RC_ALL_IS_WELL_ ---
+
+--- Start Module: rasscf at Mon Jul 27 11:44:34 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:44:38 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 3 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:44:38 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:39 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:39 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:44:40 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:44:40 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:44:41 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:41 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:44:45 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 3 seconds ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:44:45 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     3 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:45 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:44:45 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:44:46 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:44:46 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:44:49 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:44:49 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:49 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:49 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:44:49 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:44:51 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:44:51 2026 /rc=_RC_ALL_IS_WELL_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:51 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:44:53 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:44:53 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     4 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:54 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:44:54 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:44:55 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:44:55 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:44:57 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:44:57 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:44:58 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:44:58 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:44:59 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:44:59 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:45:00 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:00 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:45:01 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:45:01 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     5 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:02 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:45:02 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:45:04 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:45:04 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:45:06 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:45:06 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:07 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:07 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:45:08 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:45:08 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:45:09 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:09 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:45:10 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:45:10 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     6 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:11 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:45:11 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:45:12 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:45:12 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:45:15 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:45:15 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:15 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:15 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:45:16 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:45:16 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:45:17 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:17 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:45:19 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:45:19 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     7 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:20 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:45:20 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:45:21 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:45:21 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:45:24 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:45:24 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:24 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:24 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:45:25 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:45:25 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:45:27 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:27 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:45:28 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:45:28 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     8 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:29 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:45:29 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:45:30 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:45:30 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:45:33 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:45:33 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:33 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:33 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:45:33 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:45:33 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:45:34 2026 /rc=_RC_ALL_IS_WELL_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:34 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:45:37 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 3 seconds ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:45:37 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+     9 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:38 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:45:38 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:45:39 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:45:39 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:45:41 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:45:41 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:42 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:42 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:45:43 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:45:43 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:45:44 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:44 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:45:46 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:45:46 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    10 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:47 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:45:47 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:45:48 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:45:48 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:45:50 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:45:50 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:51 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:51 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:45:52 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:45:52 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:45:53 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:45:53 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:45:54 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:45:54 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    11 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:45:55 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:45:55 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:45:57 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:45:57 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:45:59 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:45:59 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:00 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:00 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:46:00 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:46:00 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:46:02 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:02 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:46:03 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:46:03 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    12 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:03 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:46:03 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:46:04 2026 /rc=_RC_ALL_IS_WELL_ ---
+
+--- Start Module: rasscf at Mon Jul 27 11:46:04 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:46:07 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 3 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:46:07 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:07 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:07 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:46:07 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:46:07 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:46:10 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 3 seconds ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:10 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:46:12 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:46:12 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    13 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:13 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:46:13 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:46:14 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:46:14 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:46:17 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:46:17 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:18 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:18 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:46:18 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:46:18 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:46:20 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:20 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:46:21 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:46:21 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    14 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:22 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:46:22 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:46:23 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:46:23 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:46:26 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:46:26 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:27 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:27 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:46:28 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:46:28 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:46:29 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:29 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:46:30 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:46:30 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    15 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:31 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:46:31 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:46:33 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:46:33 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:46:35 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:46:35 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:35 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:35 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:46:35 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:46:35 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:46:36 2026 /rc=_RC_ALL_IS_WELL_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:36 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:46:40 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 4 seconds ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:46:40 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    16 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:41 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:46:41 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:46:42 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:46:42 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:46:44 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:46:44 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:45 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:45 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:46:46 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:46:46 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:46:47 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:47 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:46:49 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:46:49 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    17 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:50 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:46:50 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:46:51 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:46:51 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:46:53 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:46:53 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:54 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:54 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:46:55 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:46:55 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:46:56 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:46:56 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:46:58 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:46:58 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    18 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:46:59 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:46:59 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:47:00 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:47:00 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:47:02 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:47:02 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:03 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:03 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:47:03 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:47:03 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:47:05 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 2 seconds ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:05 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:47:06 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:47:06 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    19 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:07 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:47:07 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:47:09 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:47:09 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:47:11 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:47:11 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:12 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:12 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:47:13 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:47:13 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:47:14 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:14 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:47:15 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:47:15 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    20 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:16 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:47:16 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:47:17 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:47:17 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:47:20 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:47:20 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:21 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:21 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:47:22 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:47:22 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:47:23 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:23 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:47:24 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:47:24 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    21 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:25 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:47:25 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:47:26 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:47:26 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:47:29 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:47:29 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:29 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:29 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:47:30 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:47:30 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:47:32 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:32 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:47:33 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:47:33 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    22 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:34 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:47:35 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:47:36 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:47:36 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:47:38 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:47:38 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:39 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:39 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:47:40 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:47:40 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:47:41 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:41 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:47:42 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:47:42 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    23 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:43 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:47:43 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:47:45 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:47:45 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:47:47 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:47:47 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:48 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:48 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:47:48 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:47:48 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:47:50 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:50 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:47:51 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:47:51 2026 ---
+  Accumulate the gradient for selected numerical differentiation.
+    24 of    25
+[ process      0]: xquit (rc =     64): _CONTINUE_LOOP_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:52 2026 /rc=_RC_CONTINUE_LOOP_ ---
+
+>>> END DO
+
+>>> IF (ITER != 1)
+
+--- Start Module: seward at Mon Jul 27 11:47:52 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: seward at Mon Jul 27 11:47:53 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module seward spent 1 second ---
+
+--- Start Module: rasscf at Mon Jul 27 11:47:53 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: rasscf at Mon Jul 27 11:47:55 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module rasscf spent 2 seconds ---
+
+--- Start Module: slapaf at Mon Jul 27 11:47:55 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+--- Stop Module: slapaf at Mon Jul 27 11:47:56 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:56 2026 ---
+[ process      0]: xquit (rc =     65): _INVOKED_OTHER_MODULE_
+--- Stop Module: alaska at Mon Jul 27 11:47:57 2026 /rc=_RC_INVOKED_OTHER_MODULE_ ---
+
+--- Start Module: mclr at Mon Jul 27 11:47:57 2026 ---
+
+--- Stop Module: mclr at Mon Jul 27 11:47:58 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module mclr spent 1 second ---
+
+--- Start Module: alaska at Mon Jul 27 11:47:58 2026 ---
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+--- Stop Module: alaska at Mon Jul 27 11:48:00 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module alaska spent 1 second ---
+
+>>> EXPORT MOLCAS_TRAP = ON
+
+--- Start Module: slapaf at Mon Jul 27 11:48:00 2026 ---
+
+  Numerical differentiation is finished!
+
+ Observe that the harmonic oscillator analysis is only valid at stationary points!
+
+ Note that rotational and translational degrees have been automatically removed,
+ if the energy is invariant to these degrees of freedom.
+
+
+ Harmonic frequencies in cm-1
+
+ IR Intensities in km/mol
+
+                        1         2         3         4         5         6
+
+     Frequency:       972.21   1022.51   1213.41   1312.37   1418.40   1537.84                                          
+
+     Intensity:    1.831E+02 2.211E+00 3.784E-03 2.992E+01 7.171E+01 5.601E-02
+     Red. mass:      1.29091   1.03756   1.00784   1.29586   1.48038   1.23944
+
+     C1         x    0.00042  -0.03544  -0.00005  -0.00039   0.12240  -0.00006
+     C1         y    0.03987   0.00103  -0.00118  -0.14016  -0.00030  -0.00008
+     C1         z    0.00023  -0.00002  -0.00000  -0.00023  -0.00004   0.06530
+     N2         x    0.00049  -0.03375   0.00003   0.00014  -0.10905   0.00008
+     N2         y   -0.12462  -0.00170   0.00017   0.02210   0.00000   0.00006
+     N2         z   -0.00015  -0.00003   0.00000   0.00015  -0.00002  -0.10379
+     H3         x   -0.00289   0.20682   0.00009   0.00102  -0.09035   0.25002
+     H3         y    0.01323  -0.00191  -0.47024   0.61272   0.00122   0.00029
+     H3         z   -0.00545   0.42915   0.00027   0.00248  -0.40530   0.53773
+     H4         x   -0.00328   0.23881   0.00002   0.00045   0.11953   0.04510
+     H4         y    0.61514   0.00760   0.52042   0.06781   0.00056  -0.00019
+     H4         z    0.00561  -0.44385  -0.00003  -0.00055  -0.37048  -0.20501
+     H5         x   -0.00318   0.23881   0.00002   0.00049   0.11948  -0.04548
+     H5         y    0.61532   0.00790  -0.51899   0.07659   0.00023  -0.00019
+     H5         z   -0.00613   0.44384   0.00002   0.00119   0.37041  -0.20582
+     H6         x   -0.00253   0.20653   0.00009   0.00072  -0.09083  -0.25002
+     H6         y    0.01307  -0.00218   0.48053   0.60469   0.00151   0.00029
+     H6         z    0.00535  -0.42851  -0.00027  -0.00254   0.40611   0.53769
+
+
+                        7         8         9        10        11        12
+
+     Frequency:      1679.18   1882.32   3330.34   3464.19   3679.99   3764.21                                          
+
+     Intensity:    1.322E-01 2.452E+01 1.508E+00 5.018E+00 1.028E+02 1.740E+02
+     Red. mass:      1.28952   2.21378   1.06132   1.13100   1.05521   1.10457
+
+     C1         x   -0.00004   0.00002  -0.00011  -0.09948  -0.00002  -0.00130
+     C1         y    0.00014  -0.00011   0.00000  -0.00002   0.00001  -0.00003
+     C1         z   -0.13914   0.14774  -0.06721   0.00008   0.00828   0.00001
+     N2         x    0.00004  -0.00003  -0.00002   0.00316  -0.00009  -0.08209
+     N2         y   -0.00011   0.00010  -0.00000  -0.00001  -0.00001  -0.00001
+     N2         z    0.02084  -0.15315   0.00756   0.00001  -0.05829   0.00007
+     H3         x    0.22238  -0.17247  -0.59459   0.57979   0.01038   0.00741
+     H3         y   -0.00047   0.00035  -0.00000   0.00008  -0.00004   0.00013
+     H3         z    0.22286  -0.09938   0.33747  -0.31924  -0.00186  -0.00340
+     H4         x   -0.25789  -0.28818   0.01654  -0.00898   0.58735   0.57016
+     H4         y    0.00041  -0.00039   0.00001   0.00007   0.00006   0.00011
+     H4         z    0.46094   0.28364   0.00993   0.00239   0.35787   0.35084
+     H5         x    0.25776   0.28834  -0.01616  -0.00876  -0.58607   0.57146
+     H5         y    0.00040  -0.00038   0.00001   0.00006   0.00006   0.00009
+     H5         z    0.46049   0.28383   0.00960  -0.00263   0.35702  -0.35175
+     H6         x   -0.22232   0.17249   0.59590   0.57850  -0.01014   0.00698
+     H6         y   -0.00047   0.00034  -0.00000   0.00010  -0.00004   0.00015
+     H6         z    0.22288  -0.09927   0.33824   0.31836  -0.00171   0.00317
+
+
+
+++ Thermochemistry
+
+ *********************
+ *                   *
+ *  THERMOCHEMISTRY  *
+ *                   *
+ *********************
+
+ Mass-centered Coordinates (angstrom):
+ ********************************************************
+ Label        X           Y           Z          Mass  
+ --------------------------------------------------------
+ C1         0.000001    0.000000   -0.678576     12.00000
+ N2        -0.000000    0.000000    0.594361     14.00307
+ H3        -0.000003    0.940805   -1.213396      1.00783
+ H4        -0.000002    0.860578    1.124110      1.00783
+ H5        -0.000000   -0.860578    1.124110      1.00783
+ H6        -0.000005   -0.940805   -1.213396      1.00783
+ --------------------------------------------------------
+ Molecular mass:   30.034374
+ Rotational Constants (cm-1):    0.8751    1.0545    5.1444
+ Rotational Constants (GHz) :   26.2344   31.6117  154.2266
+ Rotational temperatures (K):    1.2591    1.5171    7.4017
+ Rotational Symmetry factor:  1
+ Vibrational temperature (K): 
+   1398.79  1471.16  1745.83  1888.21  2040.76
+   2212.62  2415.96  2708.24  4791.62  4984.19
+   5294.69  5415.86
+ Number of trans. and rot. degrees of freedom:  6
+ ZPVE                36.135 kcal/mol      0.057585 au.
+ ZPVE corrected energy                  -94.355377 au.
+
+ *****************************************************
+ Temperature =     0.00 kelvin, Pressure =   1.00 atm
+ -----------------------------------------------------
+ Molecular Partition Function and Molar Entropy:
+                        q/V (M**-3)    S(kcal/mol*K)
+ Electronic            1.000000E+00        0.000
+ Translational         1.000000E+00        0.000
+ Rotational            1.000000E+00        2.981
+ Vibrational           1.000000E+00        0.000
+ TOTAL                 1.000000E+00        2.981
+
+ Thermal contributions to INTERNAL ENERGY:
+ Electronic           0.000 kcal/mol      0.000000 au.
+ Translational        0.000 kcal/mol      0.000000 au.
+ Rotational           0.000 kcal/mol      0.000000 au.
+ Vibrational         36.135 kcal/mol      0.057585 au.
+ TOTAL               36.135 kcal/mol      0.057585 au.
+
+ Thermal contributions to
+ ENTHALPY            36.135 kcal/mol      0.057585 au.
+ GIBBS FREE ENERGY   36.135 kcal/mol      0.057585 au.
+
+ Sum of energy and thermal contributions
+ INTERNAL ENERGY                        -94.355377 au.
+ ENTHALPY                               -94.355377 au.
+ GIBBS FREE ENERGY                      -94.355377 au.
+ -----------------------------------------------------
+
+ *****************************************************
+ Temperature =   100.00 kelvin, Pressure =   1.00 atm
+ -----------------------------------------------------
+ Molecular Partition Function and Molar Entropy:
+                        q/V (M**-3)    S(kcal/mol*K)
+ Electronic            1.000000E+00        0.000
+ Translational         9.782011E+26       30.705
+ Rotational            4.713859E+02       15.213
+ Vibrational           1.066747E-79        0.000
+ TOTAL                 4.918880E-50       45.919
+
+ Thermal contributions to INTERNAL ENERGY:
+ Electronic           0.000 kcal/mol      0.000000 au.
+ Translational        0.298 kcal/mol      0.000475 au.
+ Rotational           0.298 kcal/mol      0.000475 au.
+ Vibrational         36.135 kcal/mol      0.057585 au.
+ TOTAL               36.731 kcal/mol      0.058535 au.
+
+ Thermal contributions to
+ ENTHALPY            36.930 kcal/mol      0.058852 au.
+ GIBBS FREE ENERGY   32.338 kcal/mol      0.051534 au.
+
+ Sum of energy and thermal contributions
+ INTERNAL ENERGY                        -94.354427 au.
+ ENTHALPY                               -94.354110 au.
+ GIBBS FREE ENERGY                      -94.361428 au.
+ -----------------------------------------------------
+
+ *****************************************************
+ Temperature =   273.15 kelvin, Pressure =   1.00 atm
+ -----------------------------------------------------
+ Molecular Partition Function and Molar Entropy:
+                        q/V (M**-3)    S(kcal/mol*K)
+ Electronic            1.000000E+00        0.000
+ Translational         4.416009E+27       35.698
+ Rotational            2.128033E+03       18.209
+ Vibrational           1.243523E-29        0.191
+ TOTAL                 1.168590E+02       54.097
+
+ Thermal contributions to INTERNAL ENERGY:
+ Electronic           0.000 kcal/mol      0.000000 au.
+ Translational        0.814 kcal/mol      0.001298 au.
+ Rotational           0.814 kcal/mol      0.001298 au.
+ Vibrational         36.180 kcal/mol      0.057656 au.
+ TOTAL               37.808 kcal/mol      0.060251 au.
+
+ Thermal contributions to
+ ENTHALPY            38.351 kcal/mol      0.061116 au.
+ GIBBS FREE ENERGY   23.574 kcal/mol      0.037568 au.
+
+ Sum of energy and thermal contributions
+ INTERNAL ENERGY                        -94.352711 au.
+ ENTHALPY                               -94.351846 au.
+ GIBBS FREE ENERGY                      -94.375394 au.
+ -----------------------------------------------------
+
+ *****************************************************
+ Temperature =   298.15 kelvin, Pressure =   1.00 atm
+ -----------------------------------------------------
+ Molecular Partition Function and Molar Entropy:
+                        q/V (M**-3)    S(kcal/mol*K)
+ Electronic            1.000000E+00        0.000
+ Translational         5.035938E+27       36.133
+ Rotational            2.426771E+03       18.470
+ Vibrational           3.332280E-27        0.289
+ TOTAL                 4.072402E+04       54.892
+
+ Thermal contributions to INTERNAL ENERGY:
+ Electronic           0.000 kcal/mol      0.000000 au.
+ Translational        0.889 kcal/mol      0.001416 au.
+ Rotational           0.889 kcal/mol      0.001416 au.
+ Vibrational         36.208 kcal/mol      0.057701 au.
+ TOTAL               37.985 kcal/mol      0.060533 au.
+
+ Thermal contributions to
+ ENTHALPY            38.578 kcal/mol      0.061478 au.
+ GIBBS FREE ENERGY   22.212 kcal/mol      0.035397 au.
+
+ Sum of energy and thermal contributions
+ INTERNAL ENERGY                        -94.352428 au.
+ ENTHALPY                               -94.351484 au.
+ GIBBS FREE ENERGY                      -94.377565 au.
+ -----------------------------------------------------
+
+ *****************************************************
+ Temperature =   323.15 kelvin, Pressure =   1.00 atm
+ -----------------------------------------------------
+ Molecular Partition Function and Molar Entropy:
+                        q/V (M**-3)    S(kcal/mol*K)
+ Electronic            1.000000E+00        0.000
+ Translational         5.682434E+27       36.533
+ Rotational            2.738312E+03       18.710
+ Vibrational           3.775850E-25        0.413
+ TOTAL                 5.875326E+06       55.655
+
+ Thermal contributions to INTERNAL ENERGY:
+ Electronic           0.000 kcal/mol      0.000000 au.
+ Translational        0.963 kcal/mol      0.001535 au.
+ Rotational           0.963 kcal/mol      0.001535 au.
+ Vibrational         36.246 kcal/mol      0.057762 au.
+ TOTAL               38.173 kcal/mol      0.060832 au.
+
+ Thermal contributions to
+ ENTHALPY            38.815 kcal/mol      0.061855 au.
+ GIBBS FREE ENERGY   20.830 kcal/mol      0.033195 au.
+
+ Sum of energy and thermal contributions
+ INTERNAL ENERGY                        -94.352130 au.
+ ENTHALPY                               -94.351107 au.
+ GIBBS FREE ENERGY                      -94.379767 au.
+ -----------------------------------------------------
+
+ *****************************************************
+ Temperature =   373.15 kelvin, Pressure =   1.00 atm
+ -----------------------------------------------------
+ Molecular Partition Function and Molar Entropy:
+                        q/V (M**-3)    S(kcal/mol*K)
+ Electronic            1.000000E+00        0.000
+ Translational         7.051043E+27       37.247
+ Rotational            3.397831E+03       19.139
+ Vibrational           7.346077E-22        0.729
+ TOTAL                 1.759992E+10       57.115
+
+ Thermal contributions to INTERNAL ENERGY:
+ Electronic           0.000 kcal/mol      0.000000 au.
+ Translational        1.112 kcal/mol      0.001773 au.
+ Rotational           1.112 kcal/mol      0.001773 au.
+ Vibrational         36.357 kcal/mol      0.057938 au.
+ TOTAL               38.581 kcal/mol      0.061483 au.
+
+ Thermal contributions to
+ ENTHALPY            39.323 kcal/mol      0.062665 au.
+ GIBBS FREE ENERGY   18.010 kcal/mol      0.028701 au.
+
+ Sum of energy and thermal contributions
+ INTERNAL ENERGY                        -94.351479 au.
+ ENTHALPY                               -94.350297 au.
+ GIBBS FREE ENERGY                      -94.384261 au.
+ -----------------------------------------------------
+
+ *****************************************************
+ Temperature =   473.15 kelvin, Pressure =   1.00 atm
+ -----------------------------------------------------
+ Molecular Partition Function and Molar Entropy:
+                        q/V (M**-3)    S(kcal/mol*K)
+ Electronic            1.000000E+00        0.000
+ Translational         1.006761E+28       38.427
+ Rotational            4.851487E+03       19.846
+ Vibrational           2.429161E-17        1.601
+ TOTAL                 1.186472E+15       59.874
+
+ Thermal contributions to INTERNAL ENERGY:
+ Electronic           0.000 kcal/mol      0.000000 au.
+ Translational        1.410 kcal/mol      0.002248 au.
+ Rotational           1.410 kcal/mol      0.002248 au.
+ Vibrational         36.728 kcal/mol      0.058530 au.
+ TOTAL               39.549 kcal/mol      0.063025 au.
+
+ Thermal contributions to
+ ENTHALPY            40.489 kcal/mol      0.064523 au.
+ GIBBS FREE ENERGY   12.159 kcal/mol      0.019377 au.
+
+ Sum of energy and thermal contributions
+ INTERNAL ENERGY                        -94.349937 au.
+ ENTHALPY                               -94.348438 au.
+ GIBBS FREE ENERGY                      -94.393585 au.
+ -----------------------------------------------------
+--
+
+++    Isotopic shifts:
+      ----------------
+
+
+
+ ****************************************
+ *                                      *
+ * Isotope shifted frequencies in cm-1  *
+ *                                      *
+ ****************************************
+
+
+  Single substitutions:
+  -----------------------
+
+ Masses:
+ =======
+  13  14   1   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00      0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     971.46   1021.89   1213.41   1300.40   1408.43   1534.16                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1662.84   1864.61   3323.48   3448.32   3679.88   3764.21                                               
+
+
+ Masses:
+ =======
+  14  14   1   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00     i0.00     i0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     970.77   1021.32   1213.41   1290.14   1399.71   1529.60                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1647.14   1851.63   3317.79   3434.80   3679.79   3764.21                                               
+
+
+ Masses:
+ =======
+  12  15   1   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00     i0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     965.15   1021.95   1213.41   1312.08   1410.48   1529.53                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1678.82   1862.04   3330.25   3464.17   3674.23   3752.41                                               
+
+
+ Masses:
+ =======
+  12  14   2   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     900.33    972.06   1057.16   1260.07   1284.40   1464.81                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1649.63   1860.94   2514.37   3403.20   3679.96   3764.19                                               
+
+
+ Masses:
+ =======
+  12  14   3   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00      0.00      0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     807.77    970.45    982.89   1237.46   1256.81   1452.02                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1626.66   1836.68   2180.21   3401.77   3679.96   3764.19                                               
+
+
+ Masses:
+ =======
+  12  14   1   2   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00      0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     836.93    895.69   1155.06   1311.63   1322.67   1513.98                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1587.91   1829.32   2730.89   3330.57   3464.16   3724.58                                               
+
+
+ Masses:
+ =======
+  12  14   1   3   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     772.70    804.18   1144.45   1281.43   1311.53   1506.36                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1568.66   1801.60   2330.11   3330.54   3464.15   3724.07                                               
+
+
+ Masses:
+ =======
+  12  14   1   1   2   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     836.92    895.69   1155.26   1311.42   1322.68   1513.85                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1588.09   1829.25   2731.07   3330.56   3464.16   3724.39                                               
+
+
+ Masses:
+ =======
+  12  14   1   1   3   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00     i0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     772.69    804.18   1144.66   1281.43   1311.29   1506.22                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1568.83   1801.53   2330.28   3330.53   3464.15   3723.87                                               
+
+
+ Masses:
+ =======
+  12  14   1   1   1   2
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00     i0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     900.54    972.06   1055.79   1261.71   1284.01   1464.92                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1649.64   1860.92   2514.14   3403.50   3679.96   3764.19                                               
+
+
+ Masses:
+ =======
+  12  14   1   1   1   3
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     808.00    970.30    981.74   1237.01   1258.47   1452.15                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1626.68   1836.61   2180.04   3402.07   3679.96   3764.19                                               
+
+
+
+  Full substitutions:
+  -----------------------
+
+ Masses:
+ =======
+  12  14   2   2   2   2
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00     i0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     733.28    758.65    858.35   1039.09   1123.59   1145.71                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1252.81   1726.35   2436.59   2596.70   2682.57   2788.70                                               
+
+
+ Masses:
+ =======
+  12  14   3   3   3   3
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00      0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     605.80    667.11    701.43    926.32    934.57   1016.16                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1057.00   1600.17   2073.25   2239.88   2305.38   2382.36                                               
+
+
+ Masses:
+ =======
+  13  14   1   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00      0.00      0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     971.46   1021.89   1213.41   1300.40   1408.43   1534.16                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1662.84   1864.61   3323.48   3448.32   3679.88   3764.21                                               
+
+
+ Masses:
+ =======
+  14  14   1   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00     i0.00     i0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     970.77   1021.32   1213.41   1290.14   1399.71   1529.60                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1647.14   1851.63   3317.79   3434.80   3679.79   3764.21                                               
+
+
+ Masses:
+ =======
+  12  15   1   1   1   1
+
+
+ Frequencies:
+ ============
+                         1         2         3         4         5         6
+
+            Freq.      i0.00     i0.00     i0.00     i0.00      0.00      0.00                                               
+
+
+                         7         8         9        10        11        12
+
+            Freq.     965.15   1021.95   1213.41   1312.08   1410.48   1529.53                                               
+
+
+                        13        14        15        16        17        18
+
+            Freq.    1678.82   1862.04   3330.25   3464.17   3674.23   3752.41                                               
+
+
+--
+
+++ Principal components of the normal modes
+   ----------------------------------------
+
+   (Only contributions larger than 0.50 times the maximum are printed)
+
+
+      Mode      1
+        Frequency:          972.21 cm-1
+      ---------------------------------
+        Outofp   H5 C1 H4 N2     1.0000
+        Outofp   H4 C1 H5 N2    -1.0000
+        Dihedral H5 N2 C1 H6    -0.7390
+        Dihedral H3 C1 N2 H4     0.7388
+        Dihedral H3 C1 N2 H5    -0.5818
+        Dihedral H4 N2 C1 H6     0.5816
+      ---------------------------------
+
+      Mode      2
+        Frequency:         1022.51 cm-1
+      ---------------------------------
+        Angle C1 N2 H5           1.0000
+        Angle C1 N2 H4          -0.9999
+        Angle N2 C1 H3          -0.8885
+        Angle N2 C1 H6           0.8869
+      ---------------------------------
+
+      Mode      3
+        Frequency:         1213.41 cm-1
+      ---------------------------------
+        Dihedral H5 N2 C1 H6     1.0000
+        Dihedral H4 N2 C1 H6     1.0000
+        Dihedral H3 C1 N2 H5     0.9847
+        Dihedral H3 C1 N2 H4     0.9847
+      ---------------------------------
+
+      Mode      4
+        Frequency:         1312.37 cm-1
+      ---------------------------------
+        Outofp   H6 N2 H3 C1    -1.0000
+        Outofp   H3 N2 H6 C1     1.0000
+        Dihedral H3 C1 N2 H4    -0.8234
+        Dihedral H5 N2 C1 H6     0.8087
+        Dihedral H3 C1 N2 H5    -0.7895
+        Dihedral H4 N2 C1 H6     0.7748
+      ---------------------------------
+
+      Mode      5
+        Frequency:         1418.40 cm-1
+      ---------------------------------
+        Angle C1 N2 H4          -1.0000
+        Angle C1 N2 H5           0.9999
+        Angle N2 C1 H6          -0.9885
+        Angle N2 C1 H3           0.9867
+      ---------------------------------
+
+      Mode      6
+        Frequency:         1537.84 cm-1
+      ---------------------------------
+        Angle H3 C1 H6           1.0000
+        Angle N2 C1 H3          -0.6738
+        Angle N2 C1 H6          -0.6735
+      ---------------------------------
+
+      Mode      7
+        Frequency:         1679.18 cm-1
+      ---------------------------------
+        Angle H4 N2 H5          -1.0000
+        Angle H3 C1 H6           0.7371
+        Angle C1 N2 H4           0.6064
+        Angle C1 N2 H5           0.6057
+      ---------------------------------
+
+      Mode      8
+        Frequency:         1882.32 cm-1
+      ---------------------------------
+        Angle H4 N2 H5          -1.0000
+        Angle C1 N2 H5           0.6063
+        Angle C1 N2 H4           0.6059
+        Bond N2 C1              -0.5931
+        Angle H3 C1 H6          -0.5075
+      ---------------------------------
+
+      Mode      9
+        Frequency:         3330.34 cm-1
+      ---------------------------------
+        Bond H6 C1              -1.0000
+        Bond H3 C1              -0.9976
+      ---------------------------------
+
+      Mode     10
+        Frequency:         3464.19 cm-1
+      ---------------------------------
+        Bond H3 C1               1.0000
+        Bond H6 C1              -0.9978
+      ---------------------------------
+
+      Mode     11
+        Frequency:         3679.99 cm-1
+      ---------------------------------
+        Bond H4 N2               1.0000
+        Bond H5 N2               0.9976
+      ---------------------------------
+
+      Mode     12
+        Frequency:         3764.21 cm-1
+      ---------------------------------
+        Bond H5 N2              -1.0000
+        Bond H4 N2               0.9978
+      ---------------------------------
+--
+
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+--- Stop Module: slapaf at Mon Jul 27 11:48:01 2026 /rc=_RC_ALL_IS_WELL_ ---
+--- Module slapaf spent 1 second ---
+
+>>> END DO
+
+>>> EXPORT MOLCAS_TRAP = UNKNOWN_VARIABLE
+
+>>> EXPORT MOLCAS_MAXITER = UNKNOWN_VARIABLE
+
+.##################.
+.# Happy landing! #.
+.##################.
+
+    Timing: Wall=253.70 User=68.63 System=15.51
